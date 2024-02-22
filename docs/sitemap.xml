@@ -2,572 +2,572 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://rasilab.github.io/docs/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/lab_manual/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/bioinformatics/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/bioinformatics/bioconductor_recipes/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/bioinformatics/bioinformatic_tools_for_translation/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/bioinformatics/find_primers_in_lab_database/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/bioinformatics/introduction_to_snakemake/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/bioinformatics/useful_biology_databases/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/bioinformatics/useful_datasets/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/data_analysis/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/data_analysis/analysis_workflow/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/data_analysis/how-to-create-a-sample-annotation-file-before-analysis/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/data_analysis/transfer_and_view_data_from_microscope_computer/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/buffers/lithium_acetate_borate_buffer/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/buffers/rna_extraction_buffer/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/buffers/tbe_buffer/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/buffers/western_transfer_buffer/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/cloning/cas9_genome_editing_cerevisiae/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/cloning/crispr_sgrna_design/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/cloning/design-primers-for-gibson-cloning/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/cloning/ecoli_chemically_competent_cell_preparation/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/cloning/ecoli_tss_chemical_comp_cells/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/cloning/how_to_mutate_using_bsmb1_cloning/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/cloning/large_scale_yeast_chemical_transformation/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/cloning/picking_restriction_sites/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/cloning/preparing_gibson_isothermal_assembly_mix/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/hpark/exp353_cas9_rt_protein_extraction/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/hpark/exp361_extract_rt_phusion_taqligase/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/hpark/exp364_clone_ssiv_rt_t7rnap_tevprotease/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/hpark/exp365_clone_14xhis_sumo_gfpnanobody/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/hpark/exp367_clone_adar_variants_as_gfpnanobody_fusions/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/hpark/exp368_test_midicolumn/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/hpark/exp369_extract_senpeub_tev/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/hpark/exp370_extract_biotinligase_and_antigfp_nanobody/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/hpark/exp376_extract_rt_t7rnap/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/hpark/exp381_extract_rt_apobec1/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/hpark/exp386_make_1kb_ladder/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/hpark/exp387_test_homemade_t7rnap/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/hpark/exp389_extract_biotinligase_and_antigfp_nanobody/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/hpark/exp422_extract_rt/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/hpark/exp_template/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/htseq/notes_on_illumina_sequencing/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/instrument_operation/leica_microscope/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/instrument_operation/using_plasma_cleaner_for_bonding_microfludicts/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/labjobs/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/labjobs/Carbenicilli_stcok_sloution/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/labjobs/Preparing_competent_transformation/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/labjobs/SCD-His_plates/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/labjobs/SCD-Leu_Plates/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/labjobs/SCD-Ura_Plates/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/labjobs/SC_Ura_powder/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/labjobs/UraX25_media/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/labjobs/YEP/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/labjobs/acid_washed_glass_beads/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/labjobs/autocalve_cryovials_cap/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/labjobs/autocalve_pipette_box/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/labjobs/blasticidin_stock/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/labjobs/checklists_for_order/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/labjobs/chemical_hood/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/labjobs/clean_mini_and_micro_columns/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/labjobs/g418_aliquots/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/labjobs/lb_Carb_agar_plates/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/labjobs/lb_agar_plates/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/labjobs/lb_liquid_medium/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/labjobs/sob_medium/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/labjobs/super_broth/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/labjobs/yepd_Carb/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/labjobs/yepd_G418/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/organization/experiment-template/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/organization/labeling_conventions/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/organization/storing-conventions/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/organization/tips_for_molecular_biology_experiments/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/experiments/organization/typical_experiment_workflow/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/lab_admin/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/lab_admin/lab_duties/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/lab_admin/lab_policies/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/lab_admin/tissue_culture_jobs/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/misc/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/misc/guidelines_for_lab_meeting_presentations/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/misc/how_to_read_paper_for_journal_club/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/software/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/software/bash_oneliners/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/software/how_to_add_yourself_to_lab_website/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/software/how_to_autoexport_svg/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/software/how_to_create_docker_and_singularity_images/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/software/how_to_customize_vscode/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/software/how_to_debug_cpp_programs_using_gdb/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/software/how_to_digitally_sign_documents/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/software/how_to_draw_in_inkscape/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/software/how_to_export_reveal_js_presentation_from_orgmode/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/software/how_to_import_addgene_plasmids_into_snapgene/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/software/how_to_install_autojump/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/software/how_to_install_common_lab_software_on_ubuntu/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/software/how_to_install_emacs_on_ubuntu/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/software/how_to_install_texlive_locally/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/software/how_to_logout_while_leaving_a_process_running/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/software/how_to_setup_passwordless_ssh/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/software/how_to_setup_zotero/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/software/how_to_use_github_effectively/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/software/how_to_use_github_issues_and_branches/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/software/how_to_use_jupyter_on_rhino_cluster/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/software/how_to_use_pytorch_for_deep_learning/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/software/how_to_use_rasi_desktop_configuration_files/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/software/how_to_vpn_into_hutch_network/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/software/how_to_write_git_commit_message/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/software/how_to_write_in_org_mode/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/software/introduction_to_elisp/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/software/latex_solutions/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/software/manuals_for_commonly_used_lab_software/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/software/useful_scientific_software/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/writing/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/writing/presentation_formatting/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://rasilab.github.io/docs/writing/tips_for_writing_grant_applications/</loc>
-         <lastmod>2023-11-14</lastmod>
+         <lastmod>2024-01-14</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

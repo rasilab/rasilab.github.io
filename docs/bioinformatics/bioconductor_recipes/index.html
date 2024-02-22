@@ -79,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#contents-toc" class="md-skip">
+        <a href="#how-do-you-extract-introns-from-exonic-coordinates" class="md-skip">
           Skip to content
         </a>
       
@@ -444,8 +444,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#contents-toc" class="md-nav__link">
-    Contents TOC
+  <a href="#how-do-you-extract-introns-from-exonic-coordinates" class="md-nav__link">
+    How do you extract introns from exonic coordinates?
   </a>
   
 </li>
@@ -505,41 +505,48 @@
 
   <h1>Bioconductor recipes</h1>
 
-<h2 id="contents-toc">Contents <span class="tag" tag-name="TOC"><span class="smallcaps">TOC</span></span><a class="headerlink" href="#contents-toc" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="#what-are-the-attributes-you-can-retrieve-from-a-given-biomart-database">What are the attributes you can retrieve from a given biomaRt database?</a></li>
-<li><a href="#how-to-retrieve-ensembl-and-refseq-transcript-ids-for-a-given-gene">How to retrieve ENSEMBL and Refseq transcript IDs for a given gene?</a></li>
-<li><a href="#how-to-view-annotation-columns-associated-with-a-txdb-object">How to view annotation columns associated with a TxDb object?</a></li>
-<li><a href="#how-to-drop-unused-seqlevels-from-a-granges-object">How to drop unused seqlevels from a GRanges object?</a></li>
-<li><a href="#how-to-convert-between-refseq-mrna-id-and-gene-symbol">How to convert between Refseq mRNA ID and gene symbol?</a></li>
-</ul>
+<h2 id="how-do-you-extract-introns-from-exonic-coordinates">How do you extract introns from exonic coordinates?<a class="headerlink" href="#how-do-you-extract-introns-from-exonic-coordinates" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nf">library</span><span class="p">(</span><span class="n">plyranges</span><span class="p">)</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nf">library</span><span class="p">(</span><span class="n">GenomicRanges</span><span class="p">)</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">gtf</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read_gff</span><span class="p">(</span><span class="s">&quot;../data/ensembl/Homo_sapiens.GRCh38.108.gtf&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="n">tx</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">gtf</span><span class="w">  </span><span class="o">%&gt;%</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;transcript&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="n">exons</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">gtf</span><span class="w">  </span><span class="o">%&gt;%</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span><span class="nf">filter</span><span class="p">(</span><span class="n">type</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;exon&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="n">introns</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">GenomicRanges</span><span class="o">::</span><span class="nf">psetdiff</span><span class="p">(</span><span class="n">tx</span><span class="p">,</span><span class="w"> </span><span class="nf">split</span><span class="p">(</span><span class="n">exons</span><span class="p">,</span><span class="w"> </span><span class="n">exons</span><span class="o">$</span><span class="n">transcript_id</span><span class="p">))</span>
+</code></pre></div>
 <h2 id="what-are-the-attributes-you-can-retrieve-from-a-given-biomart-database">What are the attributes you can retrieve from a given biomaRt database?<a class="headerlink" href="#what-are-the-attributes-you-can-retrieve-from-a-given-biomart-database" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>library<span class="o">(</span>biomaRt<span class="o">)</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>ensembl&lt;-<span class="w">  </span>useMart<span class="o">(</span><span class="s2">&quot;ensembl&quot;</span>,<span class="w"> </span><span class="nv">dataset</span><span class="o">=</span><span class="s2">&quot;hsapiens_gene_ensembl&quot;</span><span class="o">)</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>listAttributes<span class="o">(</span><span class="nv">mart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>ensembl<span class="o">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">biomaRt</span><span class="p">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">ensembl</span><span class="o">&lt;-</span><span class="w">  </span><span class="nf">useMart</span><span class="p">(</span><span class="s">&quot;ensembl&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dataset</span><span class="o">=</span><span class="s">&quot;hsapiens_gene_ensembl&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nf">listAttributes</span><span class="p">(</span><span class="n">mart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ensembl</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="how-to-retrieve-ensembl-and-refseq-transcript-ids-for-a-given-gene">How to retrieve ENSEMBL and Refseq transcript IDs for a given gene?<a class="headerlink" href="#how-to-retrieve-ensembl-and-refseq-transcript-ids-for-a-given-gene" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">biomaRt</span><span class="p">)</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">ensembl</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">useMart</span><span class="p">(</span><span class="s">&quot;ensembl&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dataset</span><span class="o">=</span><span class="s">&quot;hsapiens_gene_ensembl&quot;</span><span class="p">)</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">values</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;RPS26&quot;</span><span class="p">)</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nf">getBM</span><span class="p">(</span><span class="n">attributes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;refseq_mrna&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ensembl_transcript_id&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hgnc_symbol&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">filters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;hgnc_symbol&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">values</span><span class="p">,</span><span class="w"> </span><span class="n">mart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ensembl</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">biomaRt</span><span class="p">)</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">ensembl</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">useMart</span><span class="p">(</span><span class="s">&quot;ensembl&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">dataset</span><span class="o">=</span><span class="s">&quot;hsapiens_gene_ensembl&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">values</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;RPS26&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nf">getBM</span><span class="p">(</span><span class="n">attributes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;refseq_mrna&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ensembl_transcript_id&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;hgnc_symbol&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">filters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;hgnc_symbol&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">values</span><span class="p">,</span><span class="w"> </span><span class="n">mart</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ensembl</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="how-to-view-annotation-columns-associated-with-a-txdb-object">How to view annotation columns associated with a TxDb object?<a class="headerlink" href="#how-to-view-annotation-columns-associated-with-a-txdb-object" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">TxDb.Scerevisiae.UCSC.sacCer3.sgdGene</span><span class="p">)</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">txdb</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">TxDb.Scerevisiae.UCSC.sacCer3.sgdGene</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nf">keytypes</span><span class="p">(</span><span class="n">txdb</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">TxDb.Scerevisiae.UCSC.sacCer3.sgdGene</span><span class="p">)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">txdb</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">TxDb.Scerevisiae.UCSC.sacCer3.sgdGene</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nf">keytypes</span><span class="p">(</span><span class="n">txdb</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="how-to-drop-unused-seqlevels-from-a-granges-object">How to drop unused seqlevels from a GRanges object?<a class="headerlink" href="#how-to-drop-unused-seqlevels-from-a-granges-object" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># gr is a GRanges object</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nf">seqlevels</span><span class="p">(</span><span class="n">gr</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">seqlevelsInUse</span><span class="p">(</span><span class="n">gr</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># gr is a GRanges object</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nf">seqlevels</span><span class="p">(</span><span class="n">gr</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">seqlevelsInUse</span><span class="p">(</span><span class="n">gr</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="how-to-convert-between-refseq-mrna-id-and-gene-symbol">How to convert between Refseq mRNA ID and gene symbol?<a class="headerlink" href="#how-to-convert-between-refseq-mrna-id-and-gene-symbol" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">org.Hs.eg.db</span><span class="p">)</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">refseq_to_symbol</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">toTable</span><span class="p">(</span><span class="n">org.Hs.egREFSEQ</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="nf">left_join</span><span class="p">(</span><span class="nf">toTable</span><span class="p">(</span><span class="n">org.Hs.egSYMBOL</span><span class="p">),</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;gene_id&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span><span class="nf">print</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nf">library</span><span class="p">(</span><span class="n">org.Hs.eg.db</span><span class="p">)</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="n">refseq_to_symbol</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">toTable</span><span class="p">(</span><span class="n">org.Hs.egREFSEQ</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span><span class="nf">left_join</span><span class="p">(</span><span class="nf">toTable</span><span class="p">(</span><span class="n">org.Hs.egSYMBOL</span><span class="p">),</span><span class="w"> </span><span class="n">by</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;gene_id&quot;</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">  </span><span class="nf">print</span><span class="p">()</span>
 </code></pre></div>
 
 
