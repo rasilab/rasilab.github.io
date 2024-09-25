@@ -471,6 +471,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#how-to-use-the-singularity-container-for-interactive-data-analysis-in-r-and-python" class="md-nav__link">
+    How to use the Singularity container for interactive data analysis in R and Python
+  </a>
+  
+    <nav class="md-nav" aria-label="How to use the Singularity container for interactive data analysis in R and Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps-on-the-remote-machine-for-example-fred-hutch-rhino-cluster" class="md-nav__link">
+    Steps on the remote machine (for example, Fred Hutch rhino cluster).
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#steps-on-local-machine-for-example-your-lab-desktop-computer" class="md-nav__link">
+    Steps on local machine (for example, your lab desktop computer)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -612,6 +639,63 @@
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>ln -s /fh/scratch/delete90/subramaniam_a/user/rasi/singularity .
 </code></pre></div>
 <p>This will make all common singularity containers (files ending with <code>.simg</code>) immediately available to your Snakemake workflow. Note that Snakemake names the Singularity containers based on their SHA IDs.</p>
+<h2 id="how-to-use-the-singularity-container-for-interactive-data-analysis-in-r-and-python">How to use the Singularity container for interactive data analysis in R and Python<a class="headerlink" href="#how-to-use-the-singularity-container-for-interactive-data-analysis-in-r-and-python" title="Permanent link">&para;</a></h2>
+<h3 id="steps-on-the-remote-machine-for-example-fred-hutch-rhino-cluster">Steps on the remote machine (for example, Fred Hutch <code>rhino</code> cluster).<a class="headerlink" href="#steps-on-the-remote-machine-for-example-fred-hutch-rhino-cluster" title="Permanent link">&para;</a></h3>
+<ul>
+<li>On a terminal, login into <code>rhino</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>ssh<span class="w"> </span>rhino02
+</code></pre></div>
+<ul>
+<li>
+<p>Make sure that any <code>conda</code> initialization is commented out in your <code>.bashrc</code> or <code>.bash_profile</code> file on the remote machine. This step is <strong>important</strong>. Otherwise, VScode will not recognize the <code>conda</code> environments within the Singularity container.</p>
+</li>
+<li>
+<p>Do the remote operations below from within a <a href="https://github.com/rasilab/r_python/tree/main#:~:text=from%20within%20a-,tmux,-session%20so%20that"><code>tmux</code></a> session so that you can detach and logout of your remote session and still keep the container running.</p>
+</li>
+<li>
+<p>Start a tmux session:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>tmux<span class="w"> </span>new<span class="w"> </span>-s<span class="w"> </span>tunnel
+</code></pre></div>
+<ul>
+<li>Make Singularity available:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>module<span class="w"> </span>load<span class="w"> </span>Singularity
+</code></pre></div>
+<ul>
+<li>Pull the Singularity container from the Subramaniam lab GitHub Packages Repo:</li>
+</ul>
+<p>```bash
+  cd /fh/scratch/delete90/subramaniam_a/user/rasi/singularity/
+  singularity exec -B /fh -B /hpc r_python_1.3.0.sif /bin/bash</p>
+<ul>
+<li>Start a VScode CLI tunnel from within the container:</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>./code<span class="w"> </span>tunnel
+</code></pre></div>
+If you are doing the above the first time, you will have to login to GitHub using the displayed code and also name the tunnel.</p>
+<h3 id="steps-on-local-machine-for-example-your-lab-desktop-computer">Steps on local machine (for example, your lab desktop computer)<a class="headerlink" href="#steps-on-local-machine-for-example-your-lab-desktop-computer" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>On VScode, open a remote window</p>
+<ul>
+<li>Search for the command <code>Remote-Tunnels: Connect to Tunnel:</code></li>
+<li>Alternatly, the bottom left-hand corner with <code>&gt;&lt;</code> symbol for <code>Open Remote Window</code></li>
+</ul>
+</li>
+<li>
+<p>Use the <code>GitHub</code> account to start the tunnel</p>
+</li>
+<li>
+<p>Select the active tunnel</p>
+</li>
+<li>
+<p>You can now open any folder on the remote machine and create a Jupyter notebook.</p>
+</li>
+<li>You should be able to pick the Python interpreter at <code>/opt/conda/bin/python</code> or the Jupyter R kernel at <code>/opt/conda/envs/R/lib/R/bin/R</code> to run your Python or R notebook.</li>
+</ul>
 
 
 
