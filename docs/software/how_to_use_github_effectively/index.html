@@ -22,7 +22,7 @@
     
     
       
-        <title>How to use github effectively - Subramaniam Lab Docs</title>
+        <title>Tips for effectively using GitHub for lab work - Subramaniam Lab Docs</title>
       
     
     
@@ -78,6 +78,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#tips-for-effectively-using-github-for-lab-work" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -109,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              How to use github effectively
+              Tips for effectively using GitHub for lab work
             
           </span>
         </div>
@@ -431,6 +436,8 @@
   
   
   
+    
+  
   
 </nav>
                   </div>
@@ -448,10 +455,18 @@
   
 
 
-  <h1>How to use github effectively</h1>
-
+<h1 id="tips-for-effectively-using-github-for-lab-work">Tips for effectively using GitHub for lab work<a class="headerlink" href="#tips-for-effectively-using-github-for-lab-work" title="Permanent link">&para;</a></h1>
 <ol>
-<li>How to configure notifications from GitHub <a href="https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/configuring-notifications#choosing-your-notification-settings">Link</a>. Specifically, you can change your notification preferences at <a href="https://github.com/settings/notifications">https://github.com/settings/notifications</a> after logging in with your GitHub username.</li>
+<li><strong>Set your git config file to automatically rebase.</strong>
+   To push your local changes to the <code>master</code> branch of our lab repositories, you <strong>must</strong> <a href="https://git-scm.com/book/en/v2/Git-Branching-Rebasing">rebase</a> your local branch to apply any prior commits made by other lab members.
+   To automatically rebase your local branch every time you pull changes from GitHub, run the following command in a terminal:</li>
+</ol>
+<p><code>git config --global pull.rebase true</code></p>
+<p>This command updates your <code>git</code> configuration file to automatically rebase.
+   If you have trouble synchronizing changes between your local computer and GitHub, check this first!</p>
+<ol>
+<li><strong>Notifications.</strong>
+   How to configure notifications from GitHub <a href="https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/configuring-notifications#choosing-your-notification-settings">Link</a>. Specifically, you can change your notification preferences at <a href="https://github.com/settings/notifications">https://github.com/settings/notifications</a> after logging in with your GitHub username.</li>
 </ol>
 
 
