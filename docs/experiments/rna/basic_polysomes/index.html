@@ -12,7 +12,7 @@
         <meta name="author" content="rasilab">
       
       
-        <link rel="canonical" href="https://rasilab.github.io/docs/experiments/organization/labeling_conventions/">
+        <link rel="canonical" href="https://rasilab.github.io/docs/experiments/rna/basic_polysomes/">
       
       
       
@@ -22,7 +22,7 @@
     
     
       
-        <title>Labeling conventions - Subramaniam Lab Docs</title>
+        <title>Basic polysome analysis protocol for HEK293T cells - Subramaniam Lab Docs</title>
       
     
     
@@ -79,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#experiments" class="md-skip">
+        <a href="#basic-polysome-analysis-protocol-for-hek293t-cells" class="md-skip">
           Skip to content
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Labeling conventions
+              Basic polysome analysis protocol for HEK293T cells
             
           </span>
         </div>
@@ -436,6 +436,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -444,44 +446,146 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#experiments" class="md-nav__link">
-    Experiments
+  <a href="#buffers" class="md-nav__link">
+    Buffers
   </a>
+  
+    <nav class="md-nav" aria-label="Buffers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#5x-lysis-buffer" class="md-nav__link">
+    5X lysis buffer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10x-gradient-buffer" class="md-nav__link">
+    10X gradient buffer
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1x-lysis-buffer-prepared-fresh" class="md-nav__link">
+    1X lysis buffer (prepared fresh)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1x-gradient-buffers-prepared-fresh" class="md-nav__link">
+    1X gradient buffers (prepared fresh)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dpbs-cycloheximide" class="md-nav__link">
+    DPBS + cycloheximide
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#samples" class="md-nav__link">
-    Samples
+  <a href="#procedure" class="md-nav__link">
+    Procedure
   </a>
+  
+    <nav class="md-nav" aria-label="Procedure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pre-chill-rotor-and-buckets" class="md-nav__link">
+    Pre-chill rotor and buckets
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lysis" class="md-nav__link">
+    Lysis
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clarification" class="md-nav__link">
+    Clarification
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prepare-gradients" class="md-nav__link">
+    Prepare gradients
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#normalization-and-loading" class="md-nav__link">
+    Normalization and loading
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#centrifugation" class="md-nav__link">
+    Centrifugation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#cell-lines-strains" class="md-nav__link">
-    Cell Lines / Strains
+  <a href="#fractionation" class="md-nav__link">
+    Fractionation
+  </a>
+  
+    <nav class="md-nav" aria-label="Fractionation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#startup" class="md-nav__link">
+    Startup
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#plasmids" class="md-nav__link">
-    Plasmids
+        
+          <li class="md-nav__item">
+  <a href="#fractionating-and-collecting-gradients" class="md-nav__link">
+    Fractionating and collecting gradients
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#oligos" class="md-nav__link">
-    Oligos
+        
+          <li class="md-nav__item">
+  <a href="#cleanup" class="md-nav__link">
+    Cleanup
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#links" class="md-nav__link">
-    Links
+        
+          <li class="md-nav__item">
+  <a href="#rotor-and-buckets" class="md-nav__link">
+    Rotor and buckets
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -503,60 +607,314 @@
   
 
 
-  <h1>Labeling conventions</h1>
-
-<h2 id="experiments">Experiments<a class="headerlink" href="#experiments" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Name all your experiments serially starting with 1.</li>
-<li>Include issue number in all data file and analysis folder names associated with the experiment.</li>
-</ul>
-<h2 id="samples">Samples<a class="headerlink" href="#samples" title="Permanent link">&para;</a></h2>
-<ul>
-<li>Label all samples associated with the experiment as <code>1P1</code>, <code>10M2</code> and so on. For example, <code>10M2.3</code> refers to issue number <code>10</code>, <code>M</code> onosome fraction, <code>2</code> nd sample, <code>3</code> rd aliquot.</li>
-<li>First number is the issue number.</li>
-<li>Middle alphabet is a code for the type of sample (eg. <code>P</code> for PCR, <code>M</code> for monosome fraction, <code>L</code> for ligation etc.). You can come up with your own mnemonic for this.</li>
-<li>Number following the alphabet is the sample number within that set. For example, if you have 3 treatment conditions, label them as 1,2,3 etc.</li>
-<li>You can optionally add a suffix 'A, B, C' or '.1,.2,.3' if you have multiple aliquots or replicates of the same sample.</li>
-<li>Use this label on Eppendorf tubes, and note the list of samples in your lab record for that experiment.</li>
-<li>For further examples, see in the two experiment links in <a href="https://github.com/rasilab/micropeptide_immunity/issues/49">this</a> issue.</li>
-</ul>
-<h2 id="cell-lines-strains">Cell Lines / Strains<a class="headerlink" href="#cell-lines-strains" title="Permanent link">&para;</a></h2>
-<ul>
+<h1 id="basic-polysome-analysis-protocol-for-hek293t-cells">Basic polysome analysis protocol for HEK293T cells<a class="headerlink" href="#basic-polysome-analysis-protocol-for-hek293t-cells" title="Permanent link">&para;</a></h1>
+<p>Last updated 2024-04-18 by jyelland</p>
+<p>Buffers and lysis protocol derived from R. Green lab's description in <a href="https://elifesciences.org/articles/58828#s4">Sinha <em>et al.</em>, 2020</a>.</p>
+<h2 id="buffers">Buffers<a class="headerlink" href="#buffers" title="Permanent link">&para;</a></h2>
+<h3 id="5x-lysis-buffer">5X lysis buffer<a class="headerlink" href="#5x-lysis-buffer" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Stock Concentration</th>
+<th>Volume (40 mL)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>250 mM HEPES-KOH pH7.4</td>
+<td>1 M</td>
+<td>10 mL</td>
+</tr>
+<tr>
+<td>500 mM KOAC</td>
+<td>5 M</td>
+<td>4 mL</td>
+</tr>
+<tr>
+<td>75 mM MgOAc2</td>
+<td>1 M</td>
+<td>3 mL</td>
+</tr>
+<tr>
+<td>Triton X-100 2.5%</td>
+<td>100%</td>
+<td>1 mL</td>
+</tr>
+<tr>
+<td>Water</td>
+<td></td>
+<td>22 mL</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>40 mL</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Filter sterilize 5X lysis buffer, and store at 4 °C.</p>
+<h3 id="10x-gradient-buffer">10X gradient buffer<a class="headerlink" href="#10x-gradient-buffer" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Stock Concentration</th>
+<th>Volume (50 mL)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>250 mM HEPES-KOH pH7.4</td>
+<td>1 M</td>
+<td>12.5 mL</td>
+</tr>
+<tr>
+<td>1000 mM KOAC</td>
+<td>5 M</td>
+<td>10 mL</td>
+</tr>
+<tr>
+<td>50 mM MgOAc2</td>
+<td>1 M</td>
+<td>2.5 mL</td>
+</tr>
+<tr>
+<td>Water</td>
+<td></td>
+<td>25 mL</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>50 mL</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Filter sterilize 10X gradient buffer, and store at 4 °C.</p>
+<h3 id="1x-lysis-buffer-prepared-fresh">1X lysis buffer (prepared fresh)<a class="headerlink" href="#1x-lysis-buffer-prepared-fresh" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Volume</th>
+<th>Final Conc.</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5X stock</td>
+<td>1 mL</td>
+<td>1X</td>
+</tr>
+<tr>
+<td>50% glycerol</td>
+<td>0.5 mL</td>
+<td>5%</td>
+</tr>
+<tr>
+<td>1 M DTT</td>
+<td>5 μL</td>
+<td>1 mM</td>
+</tr>
+<tr>
+<td>10 mg/mL CHX</td>
+<td>50 μL</td>
+<td>100 μg/mL</td>
+</tr>
+<tr>
+<td>1 M benzamidine</td>
+<td>5 μL</td>
+<td>1 mM</td>
+</tr>
+<tr>
+<td>1 mM leupeptin</td>
+<td>5 μL</td>
+<td>1 μM</td>
+</tr>
+<tr>
+<td>1 mM pepstatin A</td>
+<td>5 μL</td>
+<td>1 μM</td>
+</tr>
+<tr>
+<td>200 mM PMSF</td>
+<td>25 μL</td>
+<td>1 mM</td>
+</tr>
+<tr>
+<td>Water</td>
+<td>3.5 mL</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>5 mL</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Add PMSF immediately before use, since PMSF is not stable in aqueous solutions.
+Commercial protease inhibitor tablets can be used as an alternative to homemade stocks.</p>
+<h3 id="1x-gradient-buffers-prepared-fresh">1X gradient buffers (prepared fresh)<a class="headerlink" href="#1x-gradient-buffers-prepared-fresh" title="Permanent link">&para;</a></h3>
+<p>45 mL of each solution is sufficient for six gradients.
+Adjust sucrose as necessary for different density gradients (these volumes are for 10%-50%).</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>10% sucrose</th>
+<th>50% sucrose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10X stock</td>
+<td>4.5</td>
+<td>4.5</td>
+</tr>
+<tr>
+<td>1 M DTT</td>
+<td>4.5 μL</td>
+<td>4.5 μL</td>
+</tr>
+<tr>
+<td>10 mg/mL CHX</td>
+<td>450 μL</td>
+<td>450 μL</td>
+</tr>
+<tr>
+<td>60% sucrose</td>
+<td>7.5</td>
+<td>37.5</td>
+</tr>
+<tr>
+<td>Water</td>
+<td>32.7</td>
+<td>2.7</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>45 mL</strong></td>
+<td><strong>45 mL</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="dpbs-cycloheximide">DPBS + cycloheximide<a class="headerlink" href="#dpbs-cycloheximide" title="Permanent link">&para;</a></h3>
+<p>Prepare fresh ~30 minutes before harvest, by adding 100 μL 10 mg/mL CHX to 10 mL DPBS.
+Incubate at 37 °C in the TC room dry bath.</p>
+<h2 id="procedure">Procedure<a class="headerlink" href="#procedure" title="Permanent link">&para;</a></h2>
+<h3 id="pre-chill-rotor-and-buckets">Pre-chill rotor and buckets<a class="headerlink" href="#pre-chill-rotor-and-buckets" title="Permanent link">&para;</a></h3>
+<p>At least one day before centrifugation, chill SW 41 Ti rotor and buckets in a cold room.</p>
+<h3 id="lysis">Lysis<a class="headerlink" href="#lysis" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Grow ≥10-cm dish(es) of HEK293T cells to ≥70% confluence.</li>
+<li>Prepare PBS + CHX and warm to 37 °C.</li>
+<li>Prepare 1X lysis buffer on ice and add PMSF just before ready to harvest.</li>
+<li>When ready to harvest cells,
+   (1) Prepare a sufficient number of cell scrapers and 5-mL serological pipets,
+   (2) Pre-chill Eppendorf tubes on ice, one for each sample,
+   (3) Pre-chill benchtop centrifuge to 4 °C.</li>
+<li>Aspirate media quickly with vacuum line.</li>
+<li>Immediately and gently rinse cells with 2.5-5 mL warm DPBS + CHX, quickly aspirating with same pipet.</li>
+<li>Immediately add 300 μL ice-cold lysis buffer dropwise to the plate.
+   Swirl lysis buffer to distribute, and firmly scrape cell material to a pool at the bottom of the plate.</li>
+<li>Pipet several times to mix, and transfer to ice-cold Eppendorf tube.</li>
+<li>Leave on ice for 10-15 minutes for lysis to complete.</li>
+<li>While tubes are on ice, pre-evacuate and chill the ultracentrifuge.</li>
+</ol>
+<h3 id="clarification">Clarification<a class="headerlink" href="#clarification" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Triturate lysate several times with ≥21 gauge needle and appropriately sized syringe.</li>
+<li>Centrifuge lysate for 10 minutes at 4 °C.
+   Pre-chill new Eppendorf tubes on ice.</li>
+<li>Transfer clarified lysate to fresh ice-cold Eppendorf tubes.</li>
+<li>While lysate clarifies, prepare gradients.</li>
+</ol>
+<h3 id="prepare-gradients">Prepare gradients<a class="headerlink" href="#prepare-gradients" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Prepare 1X gradient buffers in 50-mL conical tubes on ice.</li>
+<li>Obtain 89 mm Beckman polyallomer $^{a}$ or Sorvall tubes, one for each sample.</li>
+<li>Use the side of the aluminum marker block to draw a line at the <em>higher</em> of two possible positions
+   (to be used in conjunction with short tube caps).</li>
+<li>With a 50-mL syringe attached to one metal canula, draw ~40 mL 10% sucrose and deposit to the fill line of each tube.</li>
+<li>With a 50-mL syringe attached to the other metal canula, draw ~40 mL 50% sucrose and deposit <em>underneath</em> the 10% sucrose, to the bottom of the tube, filling to ~2 mm from the top of the tube.</li>
+<li>Attach <em>short</em> black caps to tubes, starting opposite the cap hole, to avoid bubble formation.</li>
+<li>Turn on and level the Biocomp gradient maker and select the correct "sucrose 10-50% long w/v" program.
+   The parameters are: 3:40, 80°, 21 rpm. $^{b}$</li>
+<li>Place tubes in the carousel and run the gradient program.</li>
+<li>Remove tubes and either proceed directly with sample loading, or store at 4 °C until ready for centrifugation.</li>
+</ol>
+<h4 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">&para;</a></h4>
+<p>$^{a}$ The polyallomer tubes seem to be less likely to crush during centrifugation.
+Anecdotally, crushing is also avoided by pre-chilling the buckets and rotor overnight, and keeping them cold.</p>
+<p>$^{b}$ Running this longer program has given me a better gradient, compared to the original program set to 1:50.
+Maybe this is due to the viscosity of cold sucrose
+(the gradient maker programs are designed for use at ambient temperature).</p>
+<h3 id="normalization-and-loading">Normalization and loading<a class="headerlink" href="#normalization-and-loading" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Measure lysate RNA content <em>via</em> Qubit or Nanodrop (A260).
+   Dilute lysate 1:10 before measuring, and blank with 1:10 diluted lysis buffer.</li>
+<li>Gently place tubes in rotor buckets.</li>
+<li>Load equivalent amounts of RNA, up to 300 μg (and preferably ≥100 μg), on each gradient by <em>gently</em> pipetting the necessary volume directly onto the top of the gradient.
+   If you need to load more than ~200 μL, remove the same volume from the top of the gradient to prevent spillage after cap closure.</li>
+<li>Weigh opposing tubes, including buckets and caps, and balance to within 100 mg using lysis buffer.</li>
+</ol>
+<h3 id="centrifugation">Centrifugation<a class="headerlink" href="#centrifugation" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Close buckets with caps and firmly tighten (but do not overtighten).</li>
 <li>
-<p>Name cell lines and strains as <code>hsAS1</code>, <code>ecAS3</code>, <code>scAS4</code> etc.</p>
-<ul>
-<li>The first two letters are the initials of the scientific name for the organism: hs - <em>Homo sapiens</em>, ec - <em>Escherichia coli</em>, sc - <em>Saccharomyces cerevisiae</em>.</li>
-<li>The third and fourth letters are your initials.</li>
-<li>The final number is a serial number starting at 1 (separate for every lab member).</li>
-<li>Add <code>.1, .2, .3</code> suffixes if you have multiple clones or vials of the same genotype.</li>
-</ul>
+<p>Hang buckets in their corresponding position on the rotor.</p>
 </li>
-</ul>
-<h2 id="plasmids">Plasmids<a class="headerlink" href="#plasmids" title="Permanent link">&para;</a></h2>
-<ul>
 <li>
-<p>Plasmids are named as <code>pASEC1</code>, <code>pASSC3</code> etc.</p>
-<ul>
-<li>The first two letters following 'p' are your initials.</li>
-<li>The third and fourth letters following 'p' are the initials of the scientific name for the organism that will be final host for the vector: EC - <em>Escherichia coli</em>, SC - <em>Saccharomyces cerevisiae</em>, HS - <em>Homo sapiens</em>.</li>
-<li>The final number is a serial number starting at 1 (separate for every lab member).</li>
-<li>Add <code>.1, .2, .3</code> suffixes if you have multiple biological or technical replicates of the same plasmid.</li>
-</ul>
+<p>Load <em>all</em> buckets, even if no tube is present.</p>
 </li>
-</ul>
-<h2 id="oligos">Oligos<a class="headerlink" href="#oligos" title="Permanent link">&para;</a></h2>
-<ul>
 <li>
-<p>Oligos are named as <code>oAS1</code>, <code>oAS30</code> etc.</p>
-<ul>
-<li>The first two letters following 'o' are your initials.</li>
-<li>The number at the end is a serial number starting at 1 (separate for every lab member).</li>
-<li>Add <code>.1, .2, .3</code> suffixes if you have multiple tubes of the same oligo.</li>
-</ul>
+<p>Gently rock bucket with a twisting motion to be sure that it is properly seated.</p>
 </li>
-</ul>
-<h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">&para;</a></h2>
-<p>For examples of naming cell lines, plasmids and oligos, see the <a href="http://rasilab.org/db/">lab database</a>.</p>
+<li>
+<p>Open centrifuge, seat rotor on spindle, and close door.</p>
+</li>
+<li>Centrifuge for 1 hour and 45 minutes (105 minutes) at 40,000 rpm, 4 °C.</li>
+</ol>
+<h2 id="fractionation">Fractionation<a class="headerlink" href="#fractionation" title="Permanent link">&para;</a></h2>
+<h3 id="startup">Startup<a class="headerlink" href="#startup" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Close the drain valve (flip toggle switch up), and fill the rinse reservoir with distilled water.</li>
+<li>Turn piston gradient fractionator on, followed by fraction collector.</li>
+<li>Press "SCAN" on fractionator.</li>
+<li>Start BioComp software on ThinkPad and follow initialization prompts.</li>
+</ol>
+<h3 id="fractionating-and-collecting-gradients">Fractionating and collecting gradients<a class="headerlink" href="#fractionating-and-collecting-gradients" title="Permanent link">&para;</a></h3>
+<ol>
+<li>If collecting samples, prepare a sufficient number of Eppendorf tubes in the fraction collector rack.
+   If not collecting samples, place weigh boats in the tray to catch effluent.</li>
+</ol>
+<h3 id="cleanup">Cleanup<a class="headerlink" href="#cleanup" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Rinse the system with ≥15 mL water from the rinse reservoir.</li>
+<li>Fill the small rinsing syringe with distilled water.
+   Remove the plunger silicone tip and attach the rinsing syringe adapter.
+   Rinse the plunger with the attached syringe full of water.</li>
+<li>Open the brass air valve slightly and run air through the system for ≥10 seconds.
+   Close the air valve.</li>
+<li>Empty the rinse reservoir and remove it from the fractionator.
+   Attach the empty 50-mL air syringe with its plunger drawn all the way out.</li>
+<li>Use the syringe to force air through the system.
+   When the plunger is all the way down, open the drain valve (toggle switch down) and draw the plunger back to the top of the syringe.</li>
+<li>Close the drain valve and repeat step 5 twice more.</li>
+<li>Detach the air syringe, reattach the rinse reservoir, and leave the system with the drain valve open.</li>
+<li>Empty the waste flask.</li>
+<li>Thoroughly rinse the silicone tip with deionized water to remove all traces of sucrose.</li>
+<li>Close the software, and shut down the fraction collector, followed by the piston gradient fractionator.</li>
+</ol>
+<h3 id="rotor-and-buckets">Rotor and buckets<a class="headerlink" href="#rotor-and-buckets" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Rinse buckets with deionized water, and dry overnight.</li>
+<li>Store buckets loosely capped.
+   To preserve O-ring integrity, <em>don't</em> store them fully tightened.</li>
+<li>Check O-ring condition before storing and, if necessary, lubricate them with vacuum grease or replace them.</li>
+</ol>
 
 
 
