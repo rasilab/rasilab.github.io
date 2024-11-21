@@ -468,8 +468,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#1x-lysis-buffer-prepared-fresh" class="md-nav__link">
-    1X lysis buffer (prepared fresh)
+  <a href="#12x-lysis-buffer-prepared-fresh" class="md-nav__link">
+    1.2X lysis buffer (prepared fresh)
   </a>
   
 </li>
@@ -509,8 +509,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#lysis" class="md-nav__link">
-    Lysis
+  <a href="#prepare-gradients" class="md-nav__link">
+    Prepare gradients
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lyse-cells" class="md-nav__link">
+    Lyse cells
   </a>
   
 </li>
@@ -523,15 +530,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#prepare-gradients" class="md-nav__link">
-    Prepare gradients
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#normalization-and-loading" class="md-nav__link">
-    Normalization and loading
+  <a href="#normalization-optional-and-loading" class="md-nav__link">
+    Normalization (optional) and loading
   </a>
   
 </li>
@@ -608,8 +608,8 @@
 
 
 <h1 id="basic-polysome-analysis-protocol-for-hek293t-cells">Basic polysome analysis protocol for HEK293T cells<a class="headerlink" href="#basic-polysome-analysis-protocol-for-hek293t-cells" title="Permanent link">&para;</a></h1>
-<p>Last updated 2024-04-18 by jyelland</p>
-<p>Buffers and lysis protocol derived from R. Green lab's description in <a href="https://elifesciences.org/articles/58828#s4">Sinha <em>et al.</em>, 2020</a>.</p>
+<p>Last updated 2024-11-21 by jyelland</p>
+<p>Buffers and lysis protocols are derived from R. Green lab's description in <a href="https://elifesciences.org/articles/58828#s4">Sinha <em>et al.</em>, 2020</a>.</p>
 <h2 id="buffers">Buffers<a class="headerlink" href="#buffers" title="Permanent link">&para;</a></h2>
 <h3 id="5x-lysis-buffer">5X lysis buffer<a class="headerlink" href="#5x-lysis-buffer" title="Permanent link">&para;</a></h3>
 <table>
@@ -692,7 +692,8 @@
 </tbody>
 </table>
 <p>Filter sterilize 10X gradient buffer, and store at 4 °C.</p>
-<h3 id="1x-lysis-buffer-prepared-fresh">1X lysis buffer (prepared fresh)<a class="headerlink" href="#1x-lysis-buffer-prepared-fresh" title="Permanent link">&para;</a></h3>
+<h3 id="12x-lysis-buffer-prepared-fresh">1.2X lysis buffer (prepared fresh)<a class="headerlink" href="#12x-lysis-buffer-prepared-fresh" title="Permanent link">&para;</a></h3>
+<p>A 20% increase of concentrations of components in the lysis buffer has given somewhat better polysome/monosome ratios.</p>
 <table>
 <thead>
 <tr>
@@ -703,49 +704,54 @@
 </thead>
 <tbody>
 <tr>
+<td>Water</td>
+<td>3.1 mL</td>
+<td></td>
+</tr>
+<tr>
 <td>5X stock</td>
-<td>1 mL</td>
-<td>1X</td>
+<td>1.2 mL</td>
+<td>1.2X</td>
 </tr>
 <tr>
 <td>50% glycerol</td>
-<td>0.5 mL</td>
+<td>0.6 mL</td>
 <td>5%</td>
 </tr>
 <tr>
 <td>1 M DTT</td>
-<td>5 μL</td>
-<td>1 mM</td>
+<td>6 μL</td>
+<td>1.2 mM</td>
 </tr>
 <tr>
 <td>10 mg/mL CHX</td>
-<td>50 μL</td>
-<td>100 μg/mL</td>
+<td>60 μL</td>
+<td>120 μg/mL</td>
 </tr>
 <tr>
 <td>1 M benzamidine</td>
-<td>5 μL</td>
-<td>1 mM</td>
+<td>6 μL</td>
+<td>1.2 mM</td>
 </tr>
 <tr>
 <td>1 mM leupeptin</td>
-<td>5 μL</td>
-<td>1 μM</td>
+<td>6 μL</td>
+<td>1.2 μM</td>
 </tr>
 <tr>
 <td>1 mM pepstatin A</td>
-<td>5 μL</td>
-<td>1 μM</td>
+<td>6 μL</td>
+<td>1.2 μM</td>
+</tr>
+<tr>
+<td>2,000 U/mL Turbo DNAse I</td>
+<td>24 μL</td>
+<td>9.6 U/mL</td>
 </tr>
 <tr>
 <td>200 mM PMSF</td>
-<td>25 μL</td>
-<td>1 mM</td>
-</tr>
-<tr>
-<td>Water</td>
-<td>3.5 mL</td>
-<td></td>
+<td>30 μL</td>
+<td>1.2 mM</td>
 </tr>
 <tr>
 <td><strong>Total</strong></td>
@@ -754,8 +760,13 @@
 </tr>
 </tbody>
 </table>
-<p>Add PMSF immediately before use, since PMSF is not stable in aqueous solutions.
-Commercial protease inhibitor tablets can be used as an alternative to homemade stocks.</p>
+<p>Dissolve PMSF to 200 mM in isopropyl alcohol.
+Use caution, as it is extremely toxic!
+Tare a 15-mL conical on the analytical balance,
+add powdered PSMF to a conical tube in the fume hood,
+and re-weigh the closed tube on the analytical balance to determine how much isopropyl alcohol to add.</p>
+<p>When making lysis buffer, add PMSF immediately before use, since it is not stable in aqueous solutions.</p>
+<p>Commercial protease inhibitor tablets can be used as an alternative to homemade stocks.</p>
 <h3 id="1x-gradient-buffers-prepared-fresh">1X gradient buffers (prepared fresh)<a class="headerlink" href="#1x-gradient-buffers-prepared-fresh" title="Permanent link">&para;</a></h3>
 <p>45 mL of each solution is sufficient for six gradients.
 Adjust sucrose as necessary for different density gradients (these volumes are for 10%-50%).</p>
@@ -806,31 +817,6 @@ Incubate at 37 °C in the TC room dry bath.</p>
 <h2 id="procedure">Procedure<a class="headerlink" href="#procedure" title="Permanent link">&para;</a></h2>
 <h3 id="pre-chill-rotor-and-buckets">Pre-chill rotor and buckets<a class="headerlink" href="#pre-chill-rotor-and-buckets" title="Permanent link">&para;</a></h3>
 <p>At least one day before centrifugation, chill SW 41 Ti rotor and buckets in a cold room.</p>
-<h3 id="lysis">Lysis<a class="headerlink" href="#lysis" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Grow ≥10-cm dish(es) of HEK293T cells to ≥70% confluence.</li>
-<li>Prepare PBS + CHX and warm to 37 °C.</li>
-<li>Prepare 1X lysis buffer on ice and add PMSF just before ready to harvest.</li>
-<li>When ready to harvest cells,
-   (1) Prepare a sufficient number of cell scrapers and 5-mL serological pipets,
-   (2) Pre-chill Eppendorf tubes on ice, one for each sample,
-   (3) Pre-chill benchtop centrifuge to 4 °C.</li>
-<li>Aspirate media quickly with vacuum line.</li>
-<li>Immediately and gently rinse cells with 2.5-5 mL warm DPBS + CHX, quickly aspirating with same pipet.</li>
-<li>Immediately add 300 μL ice-cold lysis buffer dropwise to the plate.
-   Swirl lysis buffer to distribute, and firmly scrape cell material to a pool at the bottom of the plate.</li>
-<li>Pipet several times to mix, and transfer to ice-cold Eppendorf tube.</li>
-<li>Leave on ice for 10-15 minutes for lysis to complete.</li>
-<li>While tubes are on ice, pre-evacuate and chill the ultracentrifuge.</li>
-</ol>
-<h3 id="clarification">Clarification<a class="headerlink" href="#clarification" title="Permanent link">&para;</a></h3>
-<ol>
-<li>Triturate lysate several times with ≥21 gauge needle and appropriately sized syringe.</li>
-<li>Centrifuge lysate for 10 minutes at 4 °C.
-   Pre-chill new Eppendorf tubes on ice.</li>
-<li>Transfer clarified lysate to fresh ice-cold Eppendorf tubes.</li>
-<li>While lysate clarifies, prepare gradients.</li>
-</ol>
 <h3 id="prepare-gradients">Prepare gradients<a class="headerlink" href="#prepare-gradients" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Prepare 1X gradient buffers in 50-mL conical tubes on ice.</li>
@@ -838,7 +824,8 @@ Incubate at 37 °C in the TC room dry bath.</p>
 <li>Use the side of the aluminum marker block to draw a line at the <em>higher</em> of two possible positions
    (to be used in conjunction with short tube caps).</li>
 <li>With a 50-mL syringe attached to one metal canula, draw ~40 mL 10% sucrose and deposit to the fill line of each tube.</li>
-<li>With a 50-mL syringe attached to the other metal canula, draw ~40 mL 50% sucrose and deposit <em>underneath</em> the 10% sucrose, to the bottom of the tube, filling to ~2 mm from the top of the tube.</li>
+<li>With a 50-mL syringe attached to the other metal canula, draw ~40 mL 50% sucrose and deposit <em>underneath</em> the 10% sucrose,
+   to the bottom of the tube, filling to ~2 mm from the top of the tube.</li>
 <li>Attach <em>short</em> black caps to tubes, starting opposite the cap hole, to avoid bubble formation.</li>
 <li>Turn on and level the Biocomp gradient maker and select the correct "sucrose 10-50% long w/v" program.
    The parameters are: 3:40, 80°, 21 rpm. $^{b}$</li>
@@ -851,30 +838,50 @@ Anecdotally, crushing is also avoided by pre-chilling the buckets and rotor over
 <p>$^{b}$ Running this longer program has given me a better gradient, compared to the original program set to 1:50.
 Maybe this is due to the viscosity of cold sucrose
 (the gradient maker programs are designed for use at ambient temperature).</p>
-<h3 id="normalization-and-loading">Normalization and loading<a class="headerlink" href="#normalization-and-loading" title="Permanent link">&para;</a></h3>
+<h3 id="lyse-cells">Lyse cells<a class="headerlink" href="#lyse-cells" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Grow ≥10-cm dish(es) of HEK293T cells to ≥70% confluence.</li>
+<li>Two hours before cell harvest or drug treatment, exchange the cell culture media for fresh, warm media.</li>
+<li>Prepare PBS + CHX and warm to 37 °C.</li>
+<li>Prepare 1X lysis buffer on ice and add PMSF just before ready to harvest.</li>
+<li>When ready to harvest cells,
+   (1) Prepare a sufficient number of cell scrapers and 5-mL serological pipets,
+   (2) Pre-chill Eppendorf tubes on ice, one for each sample,
+   (3) Pre-chill benchtop centrifuge to 4 °C.</li>
+<li>Aspirate media quickly with vacuum line.</li>
+<li>Immediately and gently rinse cells with 2.5-5 mL warm DPBS + CHX, and quickly aspirate.</li>
+<li>Immediately add 250 μL ice-cold lysis buffer dropwise to the (10-cm) plate.
+   Swirl lysis buffer to distribute, and firmly scrape cell material to a pool at the bottom of the plate.
+   For a 15-cm plate, use 400 μL lysis buffer and follow the same procedure.</li>
+<li>Pipet several times to mix, and transfer to ice-cold Eppendorf tube.</li>
+<li>Leave on ice for 10-15 minutes to allow complete lysis.</li>
+<li>While tubes are on ice, pre-evacuate and chill the ultracentrifuge.</li>
+</ol>
+<h3 id="clarification">Clarification<a class="headerlink" href="#clarification" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Invert tubes several times to promote gentle lysis.</li>
+<li>Centrifuge lysate at 8,000 <em>rcf</em>, for 5 minutes, at 4 °C.
+   Pre-chill new Eppendorf tubes on ice.</li>
+<li>Transfer clarified lysate to fresh, ice-cold Eppendorf tubes.</li>
+</ol>
+<h3 id="normalization-optional-and-loading">Normalization (optional) and loading<a class="headerlink" href="#normalization-optional-and-loading" title="Permanent link">&para;</a></h3>
+<p>It is not always necessary to normalize lysate loading, since the recorded traces are easily normalized during analysis.
+I would do now so only if I suspected large differences between the RNA content of my lysates.</p>
 <ol>
 <li>Measure lysate RNA content <em>via</em> Qubit or Nanodrop (A260).
    Dilute lysate 1:10 before measuring, and blank with 1:10 diluted lysis buffer.</li>
-<li>Gently place tubes in rotor buckets.</li>
+<li>Gently place gradient tubes in rotor buckets.</li>
 <li>Load equivalent amounts of RNA, up to 300 μg (and preferably ≥100 μg), on each gradient by <em>gently</em> pipetting the necessary volume directly onto the top of the gradient.
    If you need to load more than ~200 μL, remove the same volume from the top of the gradient to prevent spillage after cap closure.</li>
-<li>Weigh opposing tubes, including buckets and caps, and balance to within 100 mg using lysis buffer.</li>
+<li>Weigh opposing tubes, including buckets and caps, and balance to within 0.1 g using lysis buffer.</li>
 </ol>
 <h3 id="centrifugation">Centrifugation<a class="headerlink" href="#centrifugation" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Close buckets with caps and firmly tighten (but do not overtighten).</li>
-<li>
-<p>Hang buckets in their corresponding position on the rotor.</p>
-</li>
-<li>
-<p>Load <em>all</em> buckets, even if no tube is present.</p>
-</li>
-<li>
-<p>Gently rock bucket with a twisting motion to be sure that it is properly seated.</p>
-</li>
-<li>
-<p>Open centrifuge, seat rotor on spindle, and close door.</p>
-</li>
+<li>Close buckets with caps and firmly tighten.</li>
+<li>Hang buckets in their corresponding position on the rotor.
+   Load <em>all</em> buckets, even if no tube is present,
+   adn gently rock bucket with a slight twisting motion, to be sure that it is properly seated on the axle.</li>
+<li>Open centrifuge, seat the rotor on the spindle, and close the door.</li>
 <li>Centrifuge for 1 hour and 45 minutes (105 minutes) at 40,000 rpm, 4 °C.</li>
 </ol>
 <h2 id="fractionation">Fractionation<a class="headerlink" href="#fractionation" title="Permanent link">&para;</a></h2>
@@ -882,31 +889,49 @@ Maybe this is due to the viscosity of cold sucrose
 <ol>
 <li>Close the drain valve (flip toggle switch up), and fill the rinse reservoir with distilled water.</li>
 <li>Turn piston gradient fractionator on, followed by fraction collector.</li>
+<li>Attach a silicone tip to the plunger by screwing it onto the taped threads.</li>
 <li>Press "SCAN" on fractionator.</li>
-<li>Start BioComp software on ThinkPad and follow initialization prompts.</li>
+<li>Start BioComp software on ThinkPad and follow initialization prompts.
+   Be sure to choose the correct scan procedure, i.e. select whether you want to collect absorbance, fluorescence,
+   or both readings.</li>
+<li>Set the number of fractions to be collected in the "SCAN SETUP" page.
+   You can choose either a specific number of fractions, or set the desired volume per fraction.
+   You must collect a minimum of eight fractions, in order for the fraction volume to fit into a 1.5-mL Eppendorf tube.</li>
+<li>Run rinse water through the system for ~10 seconds, then follow the prompts to blank the absorbance/fluorescence reading.</li>
 </ol>
 <h3 id="fractionating-and-collecting-gradients">Fractionating and collecting gradients<a class="headerlink" href="#fractionating-and-collecting-gradients" title="Permanent link">&para;</a></h3>
 <ol>
 <li>If collecting samples, prepare a sufficient number of Eppendorf tubes in the fraction collector rack.
-   If not collecting samples, place weigh boats in the tray to catch effluent.</li>
+   If not collecting samples, place a weigh boat in the fraction collector tray to catch the flowthrough.</li>
+<li>Unscrew the bucket cap, gently remove the centrifugation tube with a pair of forceps,
+   and press the collar over the top of the tube to hold it in place.</li>
+<li>Seat the collar in the pedestal and lock it in place with a 45-degree turn,
+   then place and lock the pedestal in its position under the plunger.</li>
+<li>Start the scan and collection by pressing F1.
+   It can be helpful to auto-scale the Y-axis during the initial part of the scan,
+   then manually set the Y-axis limits to baseline and just above the top of the 80S peak (which can be quite low).</li>
+<li>If collecting a lot of fractions, you might either label samples with different colors,
+   or label fractions with a designation like "101" for "Sample 1, Fraction 1", etc.</li>
+<li>Keep fractions on ice after collecting, to preserve RNA integrity.</li>
+<li>Follow the water and air rinse prompts between scans, to avoid cross-contamination between samples.</li>
 </ol>
 <h3 id="cleanup">Cleanup<a class="headerlink" href="#cleanup" title="Permanent link">&para;</a></h3>
 <ol>
-<li>Rinse the system with ≥15 mL water from the rinse reservoir.</li>
+<li>Rinse the system with 15 mL water from the rinse reservoir.</li>
 <li>Fill the small rinsing syringe with distilled water.
    Remove the plunger silicone tip and attach the rinsing syringe adapter.
    Rinse the plunger with the attached syringe full of water.</li>
 <li>Open the brass air valve slightly and run air through the system for ≥10 seconds.
    Close the air valve.</li>
-<li>Empty the rinse reservoir and remove it from the fractionator.
-   Attach the empty 50-mL air syringe with its plunger drawn all the way out.</li>
+<li>Empty the water rinse reservoir, and remove it from the fractionator.
+   Then attach the empty 50-mL air syringe with its plunger drawn all the way out.</li>
 <li>Use the syringe to force air through the system.
    When the plunger is all the way down, open the drain valve (toggle switch down) and draw the plunger back to the top of the syringe.</li>
 <li>Close the drain valve and repeat step 5 twice more.</li>
 <li>Detach the air syringe, reattach the rinse reservoir, and leave the system with the drain valve open.</li>
 <li>Empty the waste flask.</li>
 <li>Thoroughly rinse the silicone tip with deionized water to remove all traces of sucrose.</li>
-<li>Close the software, and shut down the fraction collector, followed by the piston gradient fractionator.</li>
+<li>Close the software, and shut down the fraction collector, followed by the fractionator.</li>
 </ol>
 <h3 id="rotor-and-buckets">Rotor and buckets<a class="headerlink" href="#rotor-and-buckets" title="Permanent link">&para;</a></h3>
 <ol>
@@ -914,6 +939,7 @@ Maybe this is due to the viscosity of cold sucrose
 <li>Store buckets loosely capped.
    To preserve O-ring integrity, <em>don't</em> store them fully tightened.</li>
 <li>Check O-ring condition before storing and, if necessary, lubricate them with vacuum grease or replace them.</li>
+<li>Lubricate the bucket cap threads with a thin layer of Spinkote every few months, or as needed.</li>
 </ol>
 
 
