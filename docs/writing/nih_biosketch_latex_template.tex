@@ -1,0 +1,43 @@
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[normalem]{ulem}
+\usepackage{textcomp}
+\usepackage[margin=0.5in]{geometry}
+\usepackage{setspace}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\singlespacing
+\usepackage{titling}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hyperref]{xcolor}
+\usepackage[linktocpage, pdfstartview=FitH, colorlinks, linkcolor=blue, anchorcolor=blue, citecolor=black, filecolor=blue, menucolor=blue]{hyperref}
+\hypersetup{urlcolor=[rgb]{0.3,0.3,0.3}}
+\pretitle{\begin{center}\Large\bfseries\scshape\MakeLowercase}
+\posttitle{\par\end{center}\vskip -1em}
+\predate{}
+\postdate{}
+\preauthor{\vskip 1em \begin{flushleft}\bfseries\normalsize}
+\postauthor{\par\end{flushleft} \vskip -2em}
+\titleformat{\section}[hang]{\normalsize\bfseries}{\thesection.}{0em}{}
+\titlespacing*{\section}{0pt}{10pt}{0pt}
+\titleformat{\subsection}[hang]{\bfseries}{\thesubsection.}{2em}{}
+\titlespacing*{\subsection}{0pt}{10pt}{0pt}
+\setlength{\droptitle}{-50pt}
+\setlist[enumerate]{leftmargin=15pt}
+\setlist[itemize]{leftmargin=15pt}
+
+% For left justifying text within paragraphs in tables
+% https://tex.stackexchange.com/questions/52246
+\usepackage{array}
+
+% For adding space between paragraphs
+\usepackage{parskip}
+
+\urlstyle{same}
+\pagenumbering{gobble}
+\setlength{\parindent}{0pt}
+
+% For adding space between rows in tables
+% https://tex.stackexchange.com/questions/26690
+\renewcommand{\arraystretch}{1.2}
