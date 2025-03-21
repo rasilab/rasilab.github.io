@@ -79,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#general-organization" class="md-skip">
+        <a href="#how-to-use-singularity-containers-on-rhino-for-interactive-data-analysis-in-r-and-python" class="md-skip">
           Skip to content
         </a>
       
@@ -444,39 +444,11 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#general-organization" class="md-nav__link">
-    General organization
+  <a href="#how-to-use-singularity-containers-on-rhino-for-interactive-data-analysis-in-r-and-python" class="md-nav__link">
+    How to use Singularity containers on rhino for interactive data analysis in R and Python
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#steps-to-build-and-tag-docker-images" class="md-nav__link">
-    Steps to build and tag Docker images
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-use-images-locally" class="md-nav__link">
-    How to use images locally
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-use-our-labs-singularity-containers-in-snakemake-workflows-on-the-fred-hutch-cluster" class="md-nav__link">
-    How to use our lab's Singularity containers in Snakemake workflows on the Fred Hutch cluster
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-use-the-singularity-container-for-interactive-data-analysis-in-r-and-python" class="md-nav__link">
-    How to use the Singularity container for interactive data analysis in R and Python
-  </a>
-  
-    <nav class="md-nav" aria-label="How to use the Singularity container for interactive data analysis in R and Python">
+    <nav class="md-nav" aria-label="How to use Singularity containers on rhino for interactive data analysis in R and Python">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -495,6 +467,34 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-singularity-containers-in-snakemake-workflows-on-the-fred-hutch-cluster" class="md-nav__link">
+    How to use Singularity containers in Snakemake workflows on the Fred Hutch cluster
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#general-organization-for-docker-and-singularity-images-in-the-lab" class="md-nav__link">
+    General organization for Docker and Singularity images in the lab
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#steps-to-build-and-tag-docker-images" class="md-nav__link">
+    Steps to build and tag Docker images
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-use-images-locally" class="md-nav__link">
+    How to use images locally
+  </a>
   
 </li>
       
@@ -518,25 +518,88 @@
 
   <h1>How to create docker and singularity images</h1>
 
-<h2 id="general-organization">General organization<a class="headerlink" href="#general-organization" title="Permanent link">&para;</a></h2>
+<h2 id="how-to-use-singularity-containers-on-rhino-for-interactive-data-analysis-in-r-and-python">How to use Singularity containers on <code>rhino</code> for interactive data analysis in R and Python<a class="headerlink" href="#how-to-use-singularity-containers-on-rhino-for-interactive-data-analysis-in-r-and-python" title="Permanent link">&para;</a></h2>
+<h3 id="steps-on-the-remote-machine-for-example-fred-hutch-rhino-cluster">Steps on the remote machine (for example, Fred Hutch <code>rhino</code> cluster).<a class="headerlink" href="#steps-on-the-remote-machine-for-example-fred-hutch-rhino-cluster" title="Permanent link">&para;</a></h3>
+<ul>
+<li>On a terminal, login into <code>rhino</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ssh<span class="w"> </span>rhino02
+</code></pre></div>
 <ul>
 <li>
-<p>All Docker and Singularity images should be built off a <code>Dockerfile</code> file that lives in its own public GitHub repository in the <a href="https://github.com/orgs/rasilab/">rasilab</a> GitHub organization account. </p>
+<p>Make sure that any <code>conda</code> initialization is commented out in your <code>.bashrc</code> or <code>.bash_profile</code> file on the remote machine. This step is <strong>important</strong>. Otherwise, VScode will not recognize the <code>conda</code> environments within the Singularity container.</p>
+</li>
+<li>
+<p>Do the remote operations below from within a <a href="https://github.com/rasilab/r_python/tree/main#:~:text=from%20within%20a-,tmux,-session%20so%20that"><code>tmux</code></a> session so that you can detach and logout of your remote session and still keep the container running.</p>
+</li>
+<li>
+<p>Start a tmux session:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>tmux<span class="w"> </span>new<span class="w"> </span>-s<span class="w"> </span>tunnel
+</code></pre></div>
+<ul>
+<li>Make Singularity available:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>module<span class="w"> </span>load<span class="w"> </span>Singularity
+</code></pre></div>
+<ul>
+<li>Go to the folder with our lab Singularity images and start the appropriate Singularity container:</li>
+</ul>
+<p>```bash
+  cd /fh/working/subramaniam_a/singularity/
+  singularity exec -B /fh r_python_1.3.0.sif /bin/bash</p>
+<ul>
+<li>Start a VScode CLI tunnel from within the container:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>./code<span class="w"> </span>tunnel<span class="w"> </span>--cli-data-dir<span class="o">=</span>/home/<span class="nv">$USER</span>/R_PYTHON<span class="w"> </span>
+</code></pre></div>
+<p>If you are doing the above the first time, you will have to login to GitHub using the displayed code and also name the tunnel.</p>
+<ul>
+<li>Give the tunnel the name of the container so that you can easily identify it later.</li>
+<li>You can open new <code>tmux</code> panes within the same <code>tmux</code> session and run multiple different containers at the same time.</li>
+</ul>
+<h3 id="steps-on-local-machine-for-example-your-lab-desktop-computer">Steps on local machine (for example, your lab desktop computer)<a class="headerlink" href="#steps-on-local-machine-for-example-your-lab-desktop-computer" title="Permanent link">&para;</a></h3>
+<ul>
+<li>On VScode, open a remote window</li>
+<li>Search for the command <code>Remote-Tunnels: Connect to Tunnel:</code>. Alternately, click on the bottom left-hand corner with <code>&gt;&lt;</code> symbol for <code>Open Remote Window</code></li>
+<li>You might have to login to your <code>GitHub</code> account at this point.</li>
+<li>Select the active tunnel that you started on <code>rhino</code>.</li>
+<li>You can now open any folder on the remote machine and create a Jupyter notebook.</li>
+<li>You should be able to pick the Python interpreter at <code>/opt/conda/bin/python</code> or the Jupyter R kernel at <code>/opt/conda/envs/R/lib/R/bin/R</code> to run your Python or R notebook.</li>
+</ul>
+<h2 id="how-to-use-singularity-containers-in-snakemake-workflows-on-the-fred-hutch-cluster">How to use Singularity containers in Snakemake workflows on the Fred Hutch cluster<a class="headerlink" href="#how-to-use-singularity-containers-in-snakemake-workflows-on-the-fred-hutch-cluster" title="Permanent link">&para;</a></h2>
+<p>We often use our lab's <a href="https://github.com/orgs/rasilab/packages">standard</a> Docker containers for running specific Snakemake rules on the Fred Hutch cluster. 
+If you use a specification of the form <code>singularity: "docker://ghcr.io/rasilab/r:1.0.0"</code> within a Snakemake rule, then this Docker container will be pulled to your local directory, converted to a Singularity container, and stored at <code>.snakemake/singularity</code> in your current working directory. 
+However, it takes a long time to download and convert each Docker container and each container also uses up several GB of space. 
+To avoid this, Rasi has stored a copy of all commonly used Singularity containers in our lab at <code>/fh/working/subramaniam_a/singularity</code>. You can symbolically link this folder to your workflow by executing the following from the folder that contains your Snakemake file:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>mkdir .snakemake
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>cd .snakemake
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>ln -s /fh/working/subramaniam_a/singularity .
+</code></pre></div>
+<p>This will make all common singularity containers (files ending with <code>.simg</code>) immediately available to your Snakemake workflow. Note that Snakemake names the Singularity containers based on their SHA IDs.
+If you can get the SHA IDs for any container by using the <code>hash_generatory.py</code> script located in the above folder. For example:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>python3 hash_generator.py docker://ghcr.io/rasilab/r_python:1.3.0
+</code></pre></div>
+<h2 id="general-organization-for-docker-and-singularity-images-in-the-lab">General organization for Docker and Singularity images in the lab<a class="headerlink" href="#general-organization-for-docker-and-singularity-images-in-the-lab" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>All Docker image should be built off a <code>Dockerfile</code> file that lives in its own public GitHub repository in the <a href="https://github.com/orgs/rasilab/">rasilab</a> GitHub organization account. </p>
 </li>
 <li>
 <p>All Docker images should be publicly available in our lab's GitHub <a href="https://github.com/orgs/rasilab/packages">container</a> repository.</p>
 </li>
 <li>
-<p>For routine analyses and writing, use our lab's default <a href="https://github.com/rasilab/r/pkgs/container/r">R</a>, <a href="https://github.com/rasilab/python/pkgs/container/python">Python</a>, and <a href="https://github.com/rasilab/pandoc-latex/pkgs/container/pandoc-latex">Latex</a> images. These images should contain commonly used libraries in our lab, as you can see in the <code>Dockerfile</code> of each image. </p>
+<p>For routine analyses and writing, use our lab's default <a href="https://github.com/rasilab/r/pkgs/container/r">R</a>, <a href="https://github.com/rasilab/python/pkgs/container/python">Python</a>, and <a href="https://github.com/rasilab/pandoc-latex/pkgs/container/pandoc-latex">Latex</a> images. These images contain commonly used libraries in our lab, as you can see in the <code>Dockerfile</code> of each image.</p>
 </li>
 <li>
 <p>If you require additional R, Python, or Latex libraries not present in the above default images, build child images based off the above base images. For example, see the <a href="https://github.com/rasilab/r/pkgs/container/mageck">MaGeCK</a> package built off our default <a href="https://github.com/rasilab/pyhon/pkgs/container/python">Python</a> package.</p>
 </li>
 <li>
-<p>If you use a R, Python, or Latex library quite often and you notice that others in the lab are also using it, then incorporate it in the lab's default image while updating the repository and package tag.</p>
+<p>If you need standalone bioinformatic packages, derive them off the <a href="https://hub.docker.com/layers/continuumio/miniconda3/4.12.0/images/sha256-58b1c7df8d69655ffec017ede784a075e3c2e9feff0fc50ef65300fc75aa45ae?context=explore">Miniconda3 4.12.0</a> base image. For example, see the <a href="https://github.com/rasilab/samtools/pkgs/container/samtools">Samtools</a> package in our lab's package repository. You can also use these images as basis for other packages. For example, see the <a href="https://github.com/rasilab/bowtie2/blob/main/Dockerfile">Bowtie2</a> package in our lab's package repository.</p>
 </li>
 <li>
-<p>If you need standalone bioinformatic packages, derive them off the <a href="https://hub.docker.com/layers/continuumio/miniconda3/4.12.0/images/sha256-58b1c7df8d69655ffec017ede784a075e3c2e9feff0fc50ef65300fc75aa45ae?context=explore">Miniconda3 4.12.0</a> base image. For example, see the <a href="https://github.com/rasilab/samtools/pkgs/container/samtools">Samtools</a> package in our lab's package repository. You can also use these images as basis for other packages. For example, see the <a href="https://github.com/rasilab/bowtie2/blob/main/Dockerfile">Bowtie2</a> package in our lab's package repository.</p>
+<p>Note that <code>Docker</code> is not allowed on the Fred Hutch cluster. You can use <code>Singularity</code> images instead.</p>
 </li>
 </ul>
 <h2 id="steps-to-build-and-tag-docker-images">Steps to build and tag Docker images<a class="headerlink" href="#steps-to-build-and-tag-docker-images" title="Permanent link">&para;</a></h2>
@@ -550,18 +613,18 @@
 </li>
 <li>
 <p>Build the Docker image from the folder that contains the <code>Dockerfile</code>. Give a specific tag (see below for tag convention).</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>&lt;image_name:tag&gt;<span class="w"> </span>.
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># example</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>ghcr.io/rasilab/mageck:0.5.9<span class="w"> </span>.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>&lt;image_name:tag&gt;<span class="w"> </span>.
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="c1"># example</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>ghcr.io/rasilab/mageck:0.5.9<span class="w"> </span>.
 </code></pre></div>
 </li>
 <li>
 <p>Assuming the above build command is successful, first commit and tag the <code>Dockerfile</code>.  You might have to set the remote if you created a new GitHub repository using <code>git remote set-url origin &lt;url&gt;</code>. GitHub will prompt you for this when you create </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git<span class="w"> </span>add<span class="w"> </span>Dockerfile
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Update Dockerfile with &lt;software&gt;&quot;</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>&lt;tag&gt;<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Update Dockerfile with &lt;software&gt;&quot;</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>&lt;tag&gt;
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>git<span class="w"> </span>push<span class="w"> </span>--all
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>git<span class="w"> </span>add<span class="w"> </span>Dockerfile
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Update Dockerfile with &lt;software&gt;&quot;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>git<span class="w"> </span>tag<span class="w"> </span>-a<span class="w"> </span>&lt;tag&gt;<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;Update Dockerfile with &lt;software&gt;&quot;</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>&lt;tag&gt;
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>git<span class="w"> </span>push<span class="w"> </span>--all
 </code></pre></div>
 </li>
 <li>
@@ -586,115 +649,43 @@
 </li>
 <li>
 <p>Push the Docker image to the GitHub container registry. The first time you do this from a computer, you will have to set up a Personal Access Token (classic version) as explained <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic">here</a>.  Make sure to give the <a href="https://docs.github.com/en/packages/learn-github-packages/about-permissions-for-github-packages#about-scopes-and-permissions-for-package-registries"><code>write:packages</code></a> permission when you create the token. </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>docker<span class="w"> </span>push<span class="w"> </span>&lt;image_name:tag&gt;
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># example</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>docker<span class="w"> </span>push<span class="w"> </span>ghcr.io/rasilab/python:1.2.0
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>docker<span class="w"> </span>push<span class="w"> </span>&lt;image_name:tag&gt;
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="c1"># example</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>docker<span class="w"> </span>push<span class="w"> </span>ghcr.io/rasilab/python:1.2.0
 </code></pre></div>
+- Make sure to make the GitHub package and repository public so that you and other lab members can access it from the Fred Hutch cluster.</p>
 </li>
 <li>
 <p>You can pull these images as <code>Singularity</code> images using the following command (used on Fred Hutch cluster):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>module<span class="w"> </span>load<span class="w"> </span>Singularity
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>singularity<span class="w"> </span>pull<span class="w"> </span>docker://&lt;image_name:tag&gt;
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># example</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>singularity<span class="w"> </span>pull<span class="w"> </span>docker://ghcr.io/rasilab/python:1.0.0
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>module<span class="w"> </span>load<span class="w"> </span>Singularity
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>singularity<span class="w"> </span>pull<span class="w"> </span>docker://&lt;image_name:tag&gt;
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="c1"># example</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>singularity<span class="w"> </span>pull<span class="w"> </span>docker://ghcr.io/rasilab/r_python:1.3.0
 </code></pre></div>
-</li>
-<li>
-<p>If you are pulling Singularity images that are not public (avoid this as much as possible), then you need to authenticate with GitHub packages using a personal access token. To do this create a GitHub <a href="https://github.com/settings/tokens/new">Personal Access Token</a> and save it in your <code>~/.bash_profile</code> as follows:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">SINGULARITY_DOCKER_USERNAME</span><span class="o">=</span>&lt;your_github_username&gt;
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">SINGULARITY_DOCKER_PASSWORD</span><span class="o">=</span>&lt;your_personal_access_token&gt;
-</code></pre></div>
-</li>
-<li>
-<p>Note that <code>Docker</code> is not allowed on the Fred Hutch cluster. You can use <code>Singularity</code> images instead.</p>
 </li>
 </ul>
 <h2 id="how-to-use-images-locally">How to use images locally<a class="headerlink" href="#how-to-use-images-locally" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p>You can pull images to your local machine by:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker<span class="w"> </span>pull<span class="w"> </span>docker://ghcr.io/rasilab/PACAGE_NAME:X.Y.Z
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>docker<span class="w"> </span>pull<span class="w"> </span>docker://ghcr.io/rasilab/PACAGE_NAME:X.Y.Z
 </code></pre></div>
 </li>
 <li>
 <p>You can create a named container from the above image by:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-i<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>pandoc-latex<span class="w"> </span>-v<span class="w"> </span><span class="nv">$HOME</span>:<span class="nv">$HOME</span><span class="w"> </span>ghcr.io/rasilab/pandoc-latex:1.1.0
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>docker<span class="w"> </span>run<span class="w"> </span>-i<span class="w"> </span>-d<span class="w"> </span>--name<span class="w"> </span>pandoc-latex<span class="w"> </span>-v<span class="w"> </span><span class="nv">$HOME</span>:<span class="nv">$HOME</span><span class="w"> </span>ghcr.io/rasilab/pandoc-latex:1.1.0
 </code></pre></div>
 </li>
 <li>
 <p>You can use the container to run a command. For example,</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-w<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="w"> </span>pandoc-latex<span class="w"> </span>pandoc<span class="w"> </span>manuscript.md<span class="w"> </span>--citeproc<span class="w"> </span>--template<span class="o">=</span>template.tex<span class="w"> </span>--metadata-file<span class="o">=</span>pandoc-options.yaml<span class="w"> </span>--pdf-engine<span class="o">=</span>xelatex<span class="w"> </span>-o<span class="w"> </span>manuscript.pdf<span class="w"> </span>--filter<span class="o">=</span>pandoc-svg.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-w<span class="w"> </span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="w"> </span>pandoc-latex<span class="w"> </span>pandoc<span class="w"> </span>manuscript.md<span class="w"> </span>--citeproc<span class="w"> </span>--template<span class="o">=</span>template.tex<span class="w"> </span>--metadata-file<span class="o">=</span>pandoc-options.yaml<span class="w"> </span>--pdf-engine<span class="o">=</span>xelatex<span class="w"> </span>-o<span class="w"> </span>manuscript.pdf<span class="w"> </span>--filter<span class="o">=</span>pandoc-svg.py
 </code></pre></div>
 </li>
 <li>
 <p>You can also use the containers in a VSCode <code>.devcontainer.json</code> file (for eg. to run Jupyter Notebooks):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nt">&quot;image&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ghcr.io/rasilab/r:1.0.0&quot;</span><span class="p">,</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nt">&quot;image&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ghcr.io/rasilab/r:1.0.0&quot;</span><span class="p">,</span>
 </code></pre></div>
 </li>
-</ul>
-<h2 id="how-to-use-our-labs-singularity-containers-in-snakemake-workflows-on-the-fred-hutch-cluster">How to use our lab's Singularity containers in Snakemake workflows on the Fred Hutch cluster<a class="headerlink" href="#how-to-use-our-labs-singularity-containers-in-snakemake-workflows-on-the-fred-hutch-cluster" title="Permanent link">&para;</a></h2>
-<p>We often use our lab's <a href="https://github.com/orgs/rasilab/packages">standard</a> Docker containers for running specific Snakemake rules on the Fred Hutch cluster. If you use a specification of the form <code>singularity: "docker://ghcr.io/rasilab/r:1.0.0"</code> within a Snakemake rule, then this Docker container will be pulled to your local directory, converted to a Singularity container, and stored at <code>.snakemake/singularity</code> in your current working directory. However, it takes a long time to download and convert each Docker container and each conntainer also uses up several GB of space. To avoid this, Rasi has stored a copy of all commonly used Singularity containers in our lab at <code>/fh/scratch/delete90/subramaniam_a/user/rasi/singularity</code>. You can symbolically link this folder to your workflow by executing the following from the folder that contains your Snakemake file:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>mkdir .snakemake
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>cd .snakemake
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>ln -s /fh/scratch/delete90/subramaniam_a/user/rasi/singularity .
-</code></pre></div>
-<p>This will make all common singularity containers (files ending with <code>.simg</code>) immediately available to your Snakemake workflow. Note that Snakemake names the Singularity containers based on their SHA IDs.</p>
-<h2 id="how-to-use-the-singularity-container-for-interactive-data-analysis-in-r-and-python">How to use the Singularity container for interactive data analysis in R and Python<a class="headerlink" href="#how-to-use-the-singularity-container-for-interactive-data-analysis-in-r-and-python" title="Permanent link">&para;</a></h2>
-<h3 id="steps-on-the-remote-machine-for-example-fred-hutch-rhino-cluster">Steps on the remote machine (for example, Fred Hutch <code>rhino</code> cluster).<a class="headerlink" href="#steps-on-the-remote-machine-for-example-fred-hutch-rhino-cluster" title="Permanent link">&para;</a></h3>
-<ul>
-<li>On a terminal, login into <code>rhino</code></li>
-</ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>ssh<span class="w"> </span>rhino02
-</code></pre></div>
-<ul>
-<li>
-<p>Make sure that any <code>conda</code> initialization is commented out in your <code>.bashrc</code> or <code>.bash_profile</code> file on the remote machine. This step is <strong>important</strong>. Otherwise, VScode will not recognize the <code>conda</code> environments within the Singularity container.</p>
-</li>
-<li>
-<p>Do the remote operations below from within a <a href="https://github.com/rasilab/r_python/tree/main#:~:text=from%20within%20a-,tmux,-session%20so%20that"><code>tmux</code></a> session so that you can detach and logout of your remote session and still keep the container running.</p>
-</li>
-<li>
-<p>Start a tmux session:</p>
-</li>
-</ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>tmux<span class="w"> </span>new<span class="w"> </span>-s<span class="w"> </span>tunnel
-</code></pre></div>
-<ul>
-<li>Make Singularity available:</li>
-</ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>module<span class="w"> </span>load<span class="w"> </span>Singularity
-</code></pre></div>
-<ul>
-<li>Pull the Singularity container from the Subramaniam lab GitHub Packages Repo:</li>
-</ul>
-<p>```bash
-  cd /fh/scratch/delete90/subramaniam_a/user/rasi/singularity/
-  singularity exec -B /fh -B /hpc r_python_1.3.0.sif /bin/bash</p>
-<ul>
-<li>Start a VScode CLI tunnel from within the container:</li>
-</ul>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>./code<span class="w"> </span>tunnel
-</code></pre></div>
-If you are doing the above the first time, you will have to login to GitHub using the displayed code and also name the tunnel.</p>
-<h3 id="steps-on-local-machine-for-example-your-lab-desktop-computer">Steps on local machine (for example, your lab desktop computer)<a class="headerlink" href="#steps-on-local-machine-for-example-your-lab-desktop-computer" title="Permanent link">&para;</a></h3>
-<ul>
-<li>
-<p>On VScode, open a remote window</p>
-<ul>
-<li>Search for the command <code>Remote-Tunnels: Connect to Tunnel:</code></li>
-<li>Alternatly, the bottom left-hand corner with <code>&gt;&lt;</code> symbol for <code>Open Remote Window</code></li>
-</ul>
-</li>
-<li>
-<p>Use the <code>GitHub</code> account to start the tunnel</p>
-</li>
-<li>
-<p>Select the active tunnel</p>
-</li>
-<li>
-<p>You can now open any folder on the remote machine and create a Jupyter notebook.</p>
-</li>
-<li>You should be able to pick the Python interpreter at <code>/opt/conda/bin/python</code> or the Jupyter R kernel at <code>/opt/conda/envs/R/lib/R/bin/R</code> to run your Python or R notebook.</li>
 </ul>
 
 
