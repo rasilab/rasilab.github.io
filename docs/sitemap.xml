@@ -466,7 +466,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://rasilab.github.io/docs/software/how_to_create_docker_and_singularity_images/</loc>
+         <loc>https://rasilab.github.io/docs/software/how_to_create_and_use_containers/</loc>
          <lastmod>2025-03-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
