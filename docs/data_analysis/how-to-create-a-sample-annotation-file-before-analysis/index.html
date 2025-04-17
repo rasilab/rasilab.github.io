@@ -448,6 +448,19 @@
     Step 1
   </a>
   
+    <nav class="md-nav" aria-label="Step 1">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tip" class="md-nav__link">
+    &#128161; Tip
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -540,13 +553,39 @@
   <h1>How to create a sample annotation file before analysis</h1>
 
 <h2 id="step-1">Step 1<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h2>
-<p>Create a table in Libreoffice or Excel with one or more columns that will uniquely identify each of your sample. For example,</p>
+<p>Create a table in LibreOffice or Excel with one or more columns that will uniquely identify each of your sample. For example,</p>
 <ol>
 <li>In a plate reader or qPCR experiment, you will want a plate number column and a well number column for each measured well.</li>
 <li>In a flow cytometry experiment, create a column with the unique specimen number or the unique filename for each sample.</li>
 <li>In a deep sequencing experiment, it will be the unique index for each library.</li>
 <li>In a Western blot, it will be a gel number column and a lane number column.</li>
 </ol>
+<h3 id="tip">&#128161; Tip<a class="headerlink" href="#tip" title="Permanent link">&para;</a></h3>
+<p>To avoid mistyping filenames,
+you can use simple shell commands to quickly set up your sample annotations file.
+For example, to annotate a flow cytometry experiment:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>echo file,sample, &gt; sampleannotations.csv # to create the annotations file
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>for file in *.fcs; do
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    echo ${file},, &gt; sampleannotations.csv;
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>done
+</code></pre></div>
+<p>This will produce a spreadsheet with two columns, <code>file</code> and <code>sample</code>,
+where each file ending with <code>.fcs</code> appears once.
+The spreadsheet can then be edited further using Excel or LibreOffice.</p>
+<p>For experiments with a lot of references to filenames (e.g. Western blots),
+extra lines can be added to the <code>for</code> loop.
+For example, to annotate a Western blot from a gel that had nine lanes:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>echo file,lane, &gt; sampleannotations.csv # to create the annotations file
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>for file in *.tif; do
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    for lane in {1..9}; do
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>        echo ${file},${lane}, &gt;&gt; sampleannotations.csv;
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    done;
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>done
+</code></pre></div>
+<p>This will produce a spreadsheet with each of 9 lanes assigned to every image file that ends in <code>.tif</code>.
+The spreadsheet can then be edited further using Excel or LibreOffice.</p>
 <h2 id="step-2">Step 2<a class="headerlink" href="#step-2" title="Permanent link">&para;</a></h2>
 <p>Create one meta data column for each biological and technical variable that you are changing in your experiment.</p>
 <p>For example:</p>
