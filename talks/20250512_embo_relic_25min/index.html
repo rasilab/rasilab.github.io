@@ -1,0 +1,684 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>RNA Meets Protein Decay, May 11 2025</title>
+
+  <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+  <meta name="author" content="Hakim El Hattab">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="libs/reveal.js/4.3.1/reset.css">
+  <link rel="stylesheet" href="libs/reveal.js/4.3.1/reveal.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <!-- highlight Theme -->
+  
+  <link rel="stylesheet" href="libs/highlight.js/11.3.1/styles/monokai.min.css">
+  
+	
+		
+	<link rel="stylesheet" href="libs/reveal.js/4.3.1/plugin/chalkboard/style.css">
+	
+	
+	
+	
+
+
+
+  <!-- Revealjs Theme -->
+  
+  <link rel="stylesheet" href="libs/reveal.js/4.3.1/theme/black.css" id="theme">
+  
+  
+
+  <link rel="stylesheet" href="libs/styles/tasklist.css">
+	<link rel="stylesheet" href="libs/styles/iota.css">
+	<link rel="stylesheet" href="libs/styles/layout.css">
+
+
+  <!-- Revealjs Theme -->
+  
+  <link rel="stylesheet" href="rasi-white.css">
+  
+
+   <!-- css list -->
+	
+
+   
+
+</head>
+
+<body>
+
+   
+
+  <div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+
+      
+
+
+    
+        <section >
+            
+            <p><img src="svg/title-slide.png" alt=""></p>
+<aside class="notes" data-markdown="">
+* Good morning everyone, and thank you to the organizers for the opportunity to present at this wonderful conference.
+* Just a quick note: the program book lists my talk as "generic dissection of human mRNA translation."
+* But it’s actually genetic, not generic.
+* Although, generic isn’t entirely wrong.
+* In my lab, we love building general computational models of translation.
+* We test them with quantitative data and then refine the models based on what we learn.
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/intro_riboseq_contrast.png" alt=""></p>
+<aside class="notes" data-markdown="">
+* One reason we love building computational models of translation is that we have powerful high-throughput methods for measuring translation quantitatively on both endogenous and engineered mRNAs.
+* For example, you have around 10,000 endogenous mRNA species, and using ribosome profiling, you can get an accurate measure of how many ribosomes are on each mRNA and where those ribosomes are positioned.
+* You can also do massively parallel reporter assays, where you can easily generate 10,000 or more motifs and put them into a reporter.
+* You then run them through a sucrose gradient, perform polysome profiling, and sequence the fractions using high-throughput sequencing.
+* These assays help you identify which cis-motifs alter ribosome occupancy on an mRNA.
+* But neither of these approaches tells you how a specific mRNA is translated differently from others.
+* For that, you need to look at the trans-acting factors that are present in the cell.
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/trans_factor_question.png" alt=""></p>
+<aside class="notes" data-markdown="">
+* We lack scalable approaches to measure the effect of hundreds, thousands, or even all ~10,000 proteins that each cell has on translation.
+* You can do IP-mass spec to find interactors in an unbiased manner, but it won't tell you which of those interactions are functional in terms of regulating translation.
+</aside>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/intro_how_to_find_proteins_1.png" alt=""></p>
+<aside class="notes" data-markdown="">
+* So how do we measure the effect of regulatory factors on either global or mRNA-specific translation?
+* This is a figure from James Saba and Rachel Green’s paper published recently.
+* You individually knock down each of the factors you want to test.
+* Then you take those cells, perform polysome profiling, extract RNA from different fractions, and do either qPCR or northern blotting.
+* You then hope to find whether the knockdown altered either the overall polysome profile or the polysome distribution of the mRNA you’re interested in.
+* It gets unwieldy for more than a handful of knockdowns.
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/facs_screen.png" alt=""></p>
+<aside class="notes" data-markdown="">
+- Functional genomic screens using CRISPR can find proteins that regulate translation, and many folks here have done great work with it.
+- But you almost never directly look at translation in these screens.
+- Typically, you add a fluorescent tag to a reporter RNA and screen for changes in protein levels by FACS sorting after treating with a sgRNA library.
+- This is the idea approach if you want to screen for protein levels, 
+- But the problem with this approach for studying translation is that changes in protein levels might not be always due to changes in translation.
+- But more importatntly, the enrichment value you finally measure in these somewhat arbitrary FACS bins has no mechanistic interpretation.
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/intro_how_to_find_proteins_3.png" alt=""></p>
+<aside class="notes" data-markdown="">
+So, ideally, we would like to take this gold-standard polysome profiling assay, and scale it up so that it can can do it for thousands of gene knockdowns easily.
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="./svg/relic_workflow.png" alt=""></p>
+<aside class="notes" data-markdown="">
+- This is precisely what did.
+- We call this technique RNA-linked CRISPR screening, or ReLiC for short.
+- ReLiC lets us directly measure RNA phenotypes while knocking down thousands of proteins in parallel, in this case, all 2,000 known RNA-associated proteins.
+- There are two key ideas in ReLiC.
+- One is that instead of cloning a fluorescent tag, you put a random 20nt barcode.
+- Two, instead of delivering the CRISPR guide library in trans, you put it in cis along with this barcoded reporter.
+- What this lets you do is to link each random barcode to a unique guide RNA.
+- You then integrate this library as a pool into HEK293T cells, induce Cas9 to deplete the targeted proteins, do polysome profiling, extract RNA, then sequence the barcodes.
+- The sequence of barcode tells us what guide RNA is present in the cell, so what protein is being depleted.
+- And the ratio of barcode counts between the polysome and monosome fraction gives you a quantitative measure of how much the protein depletion altered ribosome occupancy on the reporter you are studying.
+- Hope that is clear to everyone.
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/polysome_screen_hits.png" alt=""></p>
+<aside class="notes" data-markdown="">
+* We first applied this assay to a well-translated beta-globin reporter RNA.
+* On the x-axis, you're seeing the magnitude of the change in polysome-to-monosome ratio relative to the median.
+* On the y-axis, you're seeing the significance of that change.
+* Out of the 2,000 RNA-binding proteins we knocked down, 300 of them significantly reduced ribosome occupancy on our reporter.
+* A much smaller fraction — about 30 — increased it.
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/polysome_screen_ribosomal_hits.png" alt=""></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/polysome_screen_ribosomal_hits_supernatant.png" alt=""></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/polysome_screen_translation_factor_hits.png" alt=""></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/relic_translation_growth_coupling.png" alt=""></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/polysome_screen_elongation_factors.png" alt=""></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/relic_nmd_workflow.png" alt=""></p>
+<aside class="notes" data-markdown="">
+<ul>
+<li>With ReLiC, we don’t have to guess but simply do another screen for NMD.</li>
+<li>For this, we slightly modified our β-globin reporter to include a premature termination codon in the second exon.</li>
+<li>We then did a screen for guides that increase the ratio of the PTC-containing isoform relative to a second barcode on a control reporter.</li>
+</ul>
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/relic_nmd_alphabetic.png" alt=""></p>
+<aside class="notes" data-markdown="">
+<ul>
+<li>We find about 100 hits for the PTC reporter, but almost none for the control reporter.</li>
+<li>Among the hits for the PTC, we recover the known core NMD factors like the UPF and SMG proteins.</li>
+<li>But we also get a whole set of ribosomal proteins, ribosome biogenesis factors, translation factors, and tRNA synthetases that are rarely found in fluorescent reporter screens for NMD.</li>
+<li>This makes sense because if you knock down translation components, you are not going to get increased protein expression no matter whether or not the mRNA is an NMD target.</li>
+</ul>
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/relic_nmd_initiation_factors.png" alt=""></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/relic_nmd_alphabetic_eif2_question.png" alt=""></p>
+<aside class="notes" data-markdown="">
+<ul>
+<li>At first glance, translation hits in NMD are not surprising because NMD occurs on a terminating ribosome.</li>
+<li>But we find the many of the hits are 1 or 2 steps removed from the core eIF2 initiation complex, which is a known target of regulation through phosphorylation by numerous stresses like amino acid starvation and mitochonrial stress.</li>
+<li>This suggests that many of the translation-related hits might be acting via eIF2 phosphorylation.</li>
+</ul>
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/nmd_isrib_sggcn2.png" alt=""></p>
+<aside class="notes" data-markdown="">
+<ul>
+<li>We then repeat our ReLiC screen with our NMD reporter, but now in the presence of the drug ISRIB or lentiviruses that target GCN2.</li>
+</ul>
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/nmd_isrib_sggcn2_results.png" alt=""></p>
+<aside class="notes" data-markdown="">
+<ul>
+<li>On the right, we see that knockout of GCN2 modifies the effect of only tRNA synthetases on the NMD reporter.</li>
+<li>On the left, we see that treatment with ISRIB modifies the effect of both tRNA synthetases and mitochondrial hits on the NMD reporter.</li>
+<li>This shows how you can use ReLiC not just to identify regulators of RNA metabolism, but we can also easily do modifier screens to dissect the pathways through which the regulators act.</li>
+</ul>
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/hht_chx_ans_design.png" alt=""></p>
+<aside class="notes" data-markdown="">
+<ul>
+<li>We took a simple EYFP reporter, and performed a ReLiC screen to measure its RNA levels when we inhibited translation using either a drug harringtonine that inhibits initiating ribosomes or cycloheximide a drug that inhibits elongating ribosomes.</li>
+</ul>
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/hht_chx_ans_results.png" alt=""></p>
+<aside class="notes" data-markdown="">
+<ul>
+<li>We got a single unexpected hit when we used harringtonine, which is an FDA-approved drug for treating leukemia.</li>
+<li>We found that the knocking out the protein GCN1, decreases RNA levels specifically during harringtonine treatment.</li>
+</ul>
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/hht_model.png" alt=""></p>
+<aside class="notes" data-markdown="">
+<ul>
+<li>You migh or might not remember the earier part of my talk where I said GCN1 is a long snakelike protein that binds collided ribosomes and triggers mRNA decay.</li>
+<li>But, harringtonine itself arrests initiating ribosomes but does not affect elongating ribosomes. So, there should be no colliding ribosomes under harringtonine treatment.</li>
+<li>So why does GCN1 show up as a hit here?</li>
+</ul>
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/gcn1_ieg.png" alt=""></p>
+
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/hht_model_2.png" alt=""></p>
+<aside class="notes" data-markdown="">
+<ul>
+<li>Without showing some more data, we think we are seeing something really cool here.
+<ul>
+<li>When harringtonine inhibits translation initiation on mRNAs with a single start codon with strong kozak, you do not have collisions.</li>
+</ul>
+</li>
+<li>But half of human mRNAs have multiple start codons.</li>
+<li>When you have two competing start codons with overlapping coding regions, then the arrested ribosome at the upstream start codon during harringtonine treatment periodically transitions to an elongating ribosome and collide with a harringtonine-arrested initiating ribosome at a downstream start codon. We think this recruits GCN1, which then triggers mRNA decay.</li>
+<li>If you look at ribosome profiling data for which human mRNAs have such overlapping start codons, these are often classic tumor-promoting genes like MYC and JUN.</li>
+<li>We are currently testing if these mRNAs are regulated by collisions during harringtonine treatment in a GCN1-dependent manner.</li>
+</ul>
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/talk_summary.png" alt=""></p>
+<aside class="notes" data-markdown="">
+<p>With that let me summarize the three stories I have told you today.</p>
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/acknowledgments.png" alt=""></p>
+<aside class="notes" data-markdown="">
+<ul>
+<li>Last but not least, Patrick Nugent was the grad student who did all the work that I showed here today.</li>
+<li>And he was assisted by Heungwon Park.</li>
+<li>I want to thank my funding sources, and I am happy to take any questions.</li>
+</ul>
+</aside>
+            </section>
+    
+
+
+    </div>
+
+
+  </div>
+
+  <div class="line top"></div>
+  <div class="line bottom"></div>
+  <div class="line left"></div>
+  <div class="line right"></div>
+
+  <script src="libs/reveal.js/4.3.1/reveal.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/notes/notes.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/markdown/markdown.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/highlight/highlight.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/math/math.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/fullscreen/plugin.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/animate/plugin.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/animate/svg.min.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/anything/plugin.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/anything/Chart.min.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/anything/d3/d3.v3.min.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/anything/d3.patch.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/anything/d3/queue.v1.min.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/anything/d3/topojson.v1.min.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/anything/function-plot.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/customcontrols/plugin.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/embed-tweet/plugin.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/chart/chart.min.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/chart/plugin.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/verticator/verticator.js"></script>
+
+<script src="libs/reveal.js/4.3.1/plugin/zoom/zoom.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/search/search.js"></script>
+
+
+
+<!--	<script src="libs/reveal.js/4.3.1/plugin/audio-slideshow/plugin.js"></script>  -->
+<!--	<script src="libs/reveal.js/4.3.1/plugin/audio-slideshow/recorder.js"></script>-->
+<!--	<script src="libs/reveal.js/4.3.1/plugin/audio-slideshow/RecordRTC.js"></script>-->
+
+  
+
+<script>
+  const printPlugins = [
+      RevealNotes,
+      RevealHighlight,
+      RevealMath.MathJax3,
+      RevealAnimate,
+      
+			RevealEmbedTweet,
+			RevealChart,
+		];
+
+		const plugins =  [...printPlugins,
+		RevealZoom, 
+		RevealSearch, 
+				RevealMarkdown, 
+				
+				RevealFullscreen,
+				RevealAnything,
+				//RevealAudioSlideshow,
+				//RevealAudioRecorder,
+				
+				// poll
+				// question
+				// seminar
+				Verticator 
+				 ]
+
+
+		// Also available as an ES module, see:
+		// https://revealjs.com/initialization/
+		Reveal.initialize({
+			controls: false,
+      controlsTutorial: true,
+      controlsLayout: 'bottom-right',
+      controlsBackArrows: 'faded',
+      progress: false,
+      slideNumber: false,
+      //#showSlideNumber "all" "print" "speaker"
+      hash: true, //# hash: false,
+      //# respondToHashChanges: true,
+      //# history: false,
+      keyboard: true,
+      //#keyboardCondition: null,
+      overview: true,
+      center: true,
+      touch: true,
+      loop: false,
+      rtl: false,
+      //#navigationMode: 'default', linear grid
+      shuffle: false,
+      fragments: true,
+      fragmentInURL: false,
+      embedded: false,
+      help: true,
+      //#pause: true
+      showNotes: false,
+      autoPlayMedia: false, // TODO fix this to a nullable value
+      //#preloadIframes: null. true false
+      //#autoAnimate: true
+      //#autoAnimateMatcher: null,
+      //#autoAnimateEasing: 'ease',
+      //autoAnimateDuration: 1.0,
+      //#autoAnimateUnmatched: true
+      //#autoAnimateStyles: []
+      autoSlide: 0, // TODO fix this to a falseable value
+      autoSlideStoppable: true,
+      autoSlideMethod: '0',
+      defaultTiming: 120,
+      mouseWheel: false,
+      //#previewLinks: false
+      //#postMessage: true, // TODO : this can cause issues with the vscode api ???
+      //#postMessageEvents: false,
+      //#focusBodyOnPageVisibilityChange: true,
+      transition: 'none',
+      transitionSpeed: 'default',
+      backgroundTransition: 'fade',
+      //#pdfMaxPagesPerSlide: Number.POSITIVE_INFINITY,
+      //#pdfSeparateFragments: true,
+      //#pdfPageHeightOffset: -1,
+      viewDistance: 3,
+      //#mobileViewDistance: 2,
+      display: 'block',
+      //#hideInactiveCursor: true,
+      //#hideCursorTime: 5000
+
+      // Parallax Background
+      parallaxBackgroundImage: '',
+      parallaxBackgroundSize: '',
+      parallaxBackgroundHorizontal: 0,
+      parallaxBackgroundVertical: 0,
+
+      //Presentation Size
+      width: 960,
+			height: 700,
+			margin: 0.04,
+      minScale: 0.2,
+      maxScale: 2,
+      disableLayout: false,
+
+      audio: {
+        prefix: 'audio/', // audio files are stored in the "audio" folder
+        suffix: '.ogg', // audio files have the ".ogg" ending
+        textToSpeechURL: null, // the URL to the text to speech converter
+        defaultNotes: false, // use slide notes as default for the text to speech converter
+        defaultText: false, // use slide text as default for the text to speech converter
+        advance: 0, // advance to next slide after given time in milliseconds after audio has played, use negative value to not advance
+        autoplay: false, // automatically start slideshow
+        defaultDuration: 5, // default duration in seconds if no audio is available
+        defaultAudios: true, // try to play audios with names such as audio/1.2.ogg
+        playerOpacity: 0.05, // opacity value of audio player if unfocused
+        playerStyle: 'position: fixed; bottom: 4px; left: 25%; width: 50%; height:75px; z-index: 33;', // style used for container of audio controls
+        startAtFragment: false, // when moving to a slide, start at the current fragment or at the start of the slide
+      },
+      
+			customcontrols: {
+					controls: [
+      						{
+						  id: 'toggle-overview',
+						  title: 'Toggle overview (O)',
+						  icon: '<i class="fa fa-th"></i>',
+						  action: 'Reveal.toggleOverview();'
+						}
+						
+				]
+			},
+			chart: {
+					defaults: { 
+						color: 'lightgray', // color of labels
+						scale: { 
+							beginAtZero: true, 
+							ticks: { stepSize: 1 },
+							grid: { color: "lightgray" } , // color of grid lines
+						},
+					},
+					line: { borderColor: [ "rgba(20,220,220,.8)" , "rgba(220,120,120,.8)", "rgba(20,120,220,.8)" ], "borderDash": [ [5,10], [0,0] ] }, 
+					bar: { backgroundColor: [ "rgba(20,220,220,.8)" , "rgba(220,120,120,.8)", "rgba(20,120,220,.8)" ]}, 
+					pie: { backgroundColor: [ ["rgba(0,0,0,.8)" , "rgba(220,20,20,.8)", "rgba(20,220,20,.8)", "rgba(220,220,20,.8)", "rgba(20,20,220,.8)"] ]},
+					radar: { borderColor: [ "rgba(20,220,220,.8)" , "rgba(220,120,120,.8)", "rgba(20,120,220,.8)" ]}, 
+			},
+			math: {
+				mathjax: 'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
+				config: 'TeX-AMS_HTML-full',
+				// pass other options into `MathJax.Hub.Config()`
+				TeX: { Macros: { RR: "{\\bf R}" } }
+				},
+				anything: [ 
+				{
+		className: "plot",
+		defaults: {width:500, height: 500, grid:true},
+		initialize: (function(container, options){ options.target = "#"+container.id; functionPlot(options) })
+	 },
+	 {
+		className: "chart",  
+		initialize: (function(container, options){ container.chart = new Chart(container.getContext("2d"), options);  })
+	 },
+	 {
+		className: "anything",
+		initialize: (function(container, options){ if (options && options.initialize) { options.initialize(container)} })
+	 },
+					],
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: (window.location.search.match(/print-pdf/gi) ? printPlugins : plugins ) 
+		});
+			
+
+
+	    // Change chalkboard theme : 
+		function changeTheme(input) {
+			var config = {};
+			config.theme = input.value;
+			Reveal.getPlugin("RevealChalkboard").configure(config);
+			input.blur();
+		}
+
+		// // Handle the message inside the webview
+        // window.addEventListener('message', event => {
+
+        //     const message = event.data; // The JSON data our extension sent
+
+        //     switch (message.command) {
+        //         case 'refactor':
+        //             Reveal.toggleHelp();
+        //     }
+        // });
+
+		if (window.location.search.match(/print-pdf-now/gi)) {
+      		setTimeout(() => {
+				window.print();
+			  }, 2500);
+			
+    }
+</script>
+
+</body>
+
+</html>
