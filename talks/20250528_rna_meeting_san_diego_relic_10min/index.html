@@ -1,0 +1,603 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>RNA Meeting, May 27 2025</title>
+
+  <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+  <meta name="author" content="Hakim El Hattab">
+
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="libs/reveal.js/4.3.1/reset.css">
+  <link rel="stylesheet" href="libs/reveal.js/4.3.1/reveal.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <!-- highlight Theme -->
+  
+  <link rel="stylesheet" href="libs/highlight.js/11.3.1/styles/monokai.min.css">
+  
+	
+		
+	<link rel="stylesheet" href="libs/reveal.js/4.3.1/plugin/chalkboard/style.css">
+	
+	
+	
+	
+
+
+
+  <!-- Revealjs Theme -->
+  
+  <link rel="stylesheet" href="libs/reveal.js/4.3.1/theme/black.css" id="theme">
+  
+  
+
+  <link rel="stylesheet" href="libs/styles/tasklist.css">
+	<link rel="stylesheet" href="libs/styles/iota.css">
+	<link rel="stylesheet" href="libs/styles/layout.css">
+
+
+  <!-- Revealjs Theme -->
+  
+  <link rel="stylesheet" href="rasi-white.css">
+  
+
+   <!-- css list -->
+	
+
+   
+
+</head>
+
+<body>
+
+   
+
+  <div class="reveal">
+
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+
+      
+
+
+    
+        <section >
+            
+            <p><img src="svg/title-slide.png" alt=""></p>
+<aside class="notes" data-markdown="">
+<ul>
+<li>Good afternoon, everyone.</li>
+<li>I am excited to present our recently developed method called RNA-linked CRISPR, or ReLiC for short, to identify gene regulatory networks for RNA metabolism in human cells.</li>
+<li>Our method is described in this bioRxiv preprint and will also be published in Nature Methods tomorrow!</li>
+</ul>
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/mrna_lifecycle.png" alt=""></p>
+<aside class="notes" data-markdown="">
+<ul>
+<li>We know that over 2000 human proteins associate with RNAs during various stages of the RNA lifecycle.</li>
+<li>But, we do not know how each of these proteins regulate each RNA metabolic process.</li>
+</ul>
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/facs_screen.png" alt=""></p>
+<aside class="notes" data-markdown="">
+<ul>
+<li>Functional genomic screens based on CRISPR are a popular way to identify proteins that regulate RNA metabolism, but they almost never directly measure RNA phenotypes.</li>
+<li>Typically, these screens rely on fluorescent protein reporters and FACS sorting.</li>
+<li>The limitation with this approach is that protein expression might not always change when you disrupt an RNA metabolic step, or might change for reasons that have nothing to do with RNA metabolism, like DNA copy number changes.</li>
+</ul>
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="./svg/relic_workflow.png" alt=""></p>
+<aside class="notes" data-markdown="">
+<ul>
+<li>To get around this problem, We have developed an approach called RNA-linked CRISPR, or ReLiC for short, that enables us to directly measure RNA phenotypes while targeting every known RNA-associated protein in human cells.</li>
+<li>There are two key ideas in ReLiC.</li>
+<li>One is that instead of cloning a fluorescent tag, you put a short 20nt random barcode in your reporter.</li>
+<li>Two, instead of delivering the CRISPR guide library in trans, you put it in cis along with the barcoded reporter.</li>
+<li>What this lets you do is to link each random barcode to a unique guide RNA.</li>
+<li>You then integrate this library as a pool into HEK293T cells, induce Cas9 to deplete the targeted proteins, and then sequence the barcodes in the reporter to measure RNA phenotypes.</li>
+<li>ReLiC is super flexible, and lets us look at pretty much any RNA metabolic process like translation, mRNA decay, or splicing that has a sequencing-based readout.</li>
+<li>I want to show you three examples of how we have used it so far.</li>
+</ul>
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/relic_splicing_workflow.png" alt=""></p>
+<aside class="notes" data-markdown="">
+<ul>
+<li>First, we use ReLiC to identify isoform-specific splicing regulators of a β-globin reporter with three exons and two introns.</li>
+<li>We integrated the guide RNA-reporter library into HEK293T cells, and extracted the RNA after Cas9 induction.</li>
+<li>In the final PCR step before sequencing, simply by changing where the PCR primer binds, we can do an intron retention screen for either of the two introns or an exon skipping screen by using a primer that bridges exons 1 and 3.</li>
+<li>We then look for guides that increase the ratio of the intron-retained or the exon-skipped isoform to the total mRNA, which is the splicing phenotype we are measuring.</li>
+</ul>
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/relic_splicing_volcano.png" alt=""></p>
+<aside class="notes" data-markdown="">
+<ul>
+<li>This is a busy volcano plot showing the results, so let me walk you through it.</li>
+<li>The y-axis is the false discovery rate, the x-axis is the isoform ratio, the three rows correspond to the different isoforms, and the four columns correspond to different days after Cas9 dinctuion.</li>
+<li>We get a lot of information from these measurements, but I want to highlight 3 interesting patterns.</li>
+<li>First, you see that intron 2 splicing is much more sensitive than intron 1 splicing or exon 2 skipping to depletion of RNA-associate proteins.</li>
+<li>Second, when you look at what are the proteins that cause intron retention, it is pretty much all known splicing-associated proteins.</li>
+<li>Third, you see that exon skipping is promoted by depletion of a very specific set of splicing factors, most of which are associated with the U2 snRNP.</li>
+</ul>
+</aside> 
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/relic_nmd_workflow.png" alt=""></p>
+<aside class="notes" data-markdown="">
+<ul>
+<li>Next, we used ReLiC to study regulators of nonsense-mediated mRNA decay,  in human cells.</li>
+<li>For this, we slightly modified our β-globin reporter to include a premature termination codon in the second exon, that is known to trigger NMD.</li>
+<li>We also put a second barcode on a control reporter.</li>
+<li>We then looked guides that increase the barcodes of the PTC-containing mRNA relative to a second barcode on a control reporter.</li>
+</ul>
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/relic_nmd_alphabetic.png" alt=""></p>
+<aside class="notes" data-markdown="">
+<ul>
+<li>We find about 100 hits for the PTC reporter, but almost none for the control reporter.</li>
+<li>Among the hits for the PTC, we recover the known core NMD factors like the UPF and SMG proteins.</li>
+<li>But we also get a whole set of ribosomal proteins, ribosome biogenesis factors, translation factors, and tRNA synthetases that are rarely found in fluorescent reporter screens for NMD.</li>
+<li>This makes sense because if you knock down translation components, you are not going to get increased protein expression no matter whether or not the mRNA is an NMD target.</li>
+</ul>
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/relic_nmd_initiation_factors.png" alt=""></p>
+<aside class="notes" data-markdown="">
+<ul>
+<li>Surprisingly, when we look at the effect of individual translation initiation factors on our NMD reporter, we see that knocking down eIF2 and eIF2B subunits increases the mRNA level, but depletion of all eIF4F and most eIF3 subunit has almost no effect on NMD.</li>
+</ul>
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/relic_nmd_alphabetic_eif2_question.png" alt=""></p>
+<aside class="notes" data-markdown="">
+<ul>
+<li>Since we know that many stresses cause eIF2 phosphorylation, we wanted to ask which of the hits in our screen regulate NMD through eIF2.</li>
+</ul>
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/nmd_isrib_sggcn2_results.png" alt=""></p>
+<aside class="notes" data-markdown="">
+<ul>
+<li>For this, we repeated ReLiC with our NMD reporter, but now in the presence of the drug ISRIB that prevents eIF2-mediated translational repression or added lentiviruses that target GCN2, an eIF2 kinase.</li>
+<li>On the left, we see that treatment with ISRIB modifies the effect of both tRNA synthetases, mitochondrial hits, and several other elongation factors on the NMD reporter, showing that these hits work through eIF2 phosphorylation.</li>
+<li>On the right, we see that knockout of GCN2 mainly modifies the effect of tRNA synthetases on the NMD reporter, showing that their depletion affects NMD through GCN2 signaling.</li>
+<li>Hopefully, this gives you a sense of ReLiC is useful not just to identify regulators, but also dissect the pathways through which the regulators act.</li>
+</ul>
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="./svg/relic_polysome_workflow.png" alt=""></p>
+<aside class="notes" data-markdown="">
+<ul>
+<li>The third example I want to show you today is how we can use ReLiC to study mRNA translation.</li>
+<li>For this, we use polysome fractionation,  a classic ultracentrifugation technique to separate mRNAs based on how many ribosomes are loaded.</li>
+<li>We then sequence the barcodes from monosome and polysome fractions to identify knockouts that alter their ratio, which is a measure of ribosome occupancy on our reporter.</li>
+</ul>
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/polysome_screen_hits.png" alt=""></p>
+<aside class="notes" data-markdown="">
+<ul>
+<li>These are the results.</li>
+<li>On the x-axis, you’re seeing the magnitude of the change in polysome-to-monosome ratio relative to the median knockdown.</li>
+<li>On the y-axis, you’re seeing the significance of that change.</li>
+<li>Out of the 2,000 RNA-associated proteins we knocked down, about 300 of them significantly reduced ribosome occupancy on our reporter.</li>
+<li>A smaller fraction — 37 — increased it.</li>
+</ul>
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/polysome_screen_ribosomal_hits.png" alt=""></p>
+<aside class="notes" data-markdown="">
+<ul>
+<li>As expected, we see that knockdown of pretty much every ribosomal protein and every known ribosome biogenesis factor reduces the polysome to monosome ratio.</li>
+</ul>
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/polysome_screen_translation_factor_hits.png" alt=""></p>
+<aside class="notes" data-markdown="">
+<ul>
+<li>We also see that knockdown of most translation initiation factors reduce the polysome to monosome ratio.</li>
+<li>More surprisingly, we see very different effects when we knockout essential protein complexes outside the core translation machinery.</li>
+<li>When we knockdown proteasomal or TRiC chaperonin subunits, we see that polysome to monosome ratio decreases, but we don’t see any effect on translation when we perturb Pol II or essential splicing complexes.</li>
+</ul>
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/polysome_screen_elongation_factors.png" alt=""></p>
+<aside class="notes" data-markdown="">
+<ul>
+<li>Polysome ReLiC also shows opposite effects of knocking down factors that act at initiation or elongation steps of translation.</li>
+<li>We see that knockdown of EIF5A or EEF2 increases polysome to monosome ratio, but knocking down initiation factors like EIF2 or EIF3 decreases this ratio.</li>
+</ul>
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/talk_summary.png" alt=""></p>
+<aside class="notes" data-markdown="">
+<ul>
+<li>With that let me summarize the key points from this talk.</li>
+<li>We have developed a method called ReLiC to measure the effect of thousands of gene perturbations on RNA metabolism in human cells.</li>
+<li>We have used ReLiC to identify regulators of splicing, NMD, and ribosome occupancy.</li>
+<li>We can use ReLiC to not just identify regulators, but organize them into functional pathways and modules, using genetic and chemical modifier screens.</li>
+<li>As I mentioned, this work will be published in Nature Methods tomorrow and is available as a preprint.</li>
+</ul>
+</aside>
+            </section>
+    
+
+
+
+    
+        <section >
+            
+            <p><img src="svg/acknowledgments.png" alt=""></p>
+<aside class="notes" data-markdown="">
+<ul>
+<li>Patrick Nugent is the graduate student who developed ReLiC in the lab, with the help of staff scientist Heungwon Park.</li>
+<li>I want to acknowledge my funding sources, and I am happy to take any questions.</li>
+<li>Thanks for your attention.</li>
+</ul>
+</aside>
+            </section>
+    
+
+
+    </div>
+
+
+  </div>
+
+  <div class="line top"></div>
+  <div class="line bottom"></div>
+  <div class="line left"></div>
+  <div class="line right"></div>
+
+  <script src="libs/reveal.js/4.3.1/reveal.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/notes/notes.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/markdown/markdown.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/highlight/highlight.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/math/math.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/fullscreen/plugin.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/animate/plugin.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/animate/svg.min.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/anything/plugin.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/anything/Chart.min.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/anything/d3/d3.v3.min.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/anything/d3.patch.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/anything/d3/queue.v1.min.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/anything/d3/topojson.v1.min.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/anything/function-plot.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/customcontrols/plugin.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/embed-tweet/plugin.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/chart/chart.min.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/chart/plugin.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/verticator/verticator.js"></script>
+
+<script src="libs/reveal.js/4.3.1/plugin/zoom/zoom.js"></script>
+<script src="libs/reveal.js/4.3.1/plugin/search/search.js"></script>
+
+
+
+<!--	<script src="libs/reveal.js/4.3.1/plugin/audio-slideshow/plugin.js"></script>  -->
+<!--	<script src="libs/reveal.js/4.3.1/plugin/audio-slideshow/recorder.js"></script>-->
+<!--	<script src="libs/reveal.js/4.3.1/plugin/audio-slideshow/RecordRTC.js"></script>-->
+
+  
+
+<script>
+  const printPlugins = [
+      RevealNotes,
+      RevealHighlight,
+      RevealMath.MathJax3,
+      RevealAnimate,
+      
+			RevealEmbedTweet,
+			RevealChart,
+		];
+
+		const plugins =  [...printPlugins,
+		RevealZoom, 
+		RevealSearch, 
+				RevealMarkdown, 
+				
+				RevealFullscreen,
+				RevealAnything,
+				//RevealAudioSlideshow,
+				//RevealAudioRecorder,
+				
+				// poll
+				// question
+				// seminar
+				Verticator 
+				 ]
+
+
+		// Also available as an ES module, see:
+		// https://revealjs.com/initialization/
+		Reveal.initialize({
+			controls: false,
+      controlsTutorial: true,
+      controlsLayout: 'bottom-right',
+      controlsBackArrows: 'faded',
+      progress: false,
+      slideNumber: false,
+      //#showSlideNumber "all" "print" "speaker"
+      hash: true, //# hash: false,
+      //# respondToHashChanges: true,
+      //# history: false,
+      keyboard: true,
+      //#keyboardCondition: null,
+      overview: true,
+      center: true,
+      touch: true,
+      loop: false,
+      rtl: false,
+      //#navigationMode: 'default', linear grid
+      shuffle: false,
+      fragments: true,
+      fragmentInURL: false,
+      embedded: false,
+      help: true,
+      //#pause: true
+      showNotes: false,
+      autoPlayMedia: false, // TODO fix this to a nullable value
+      //#preloadIframes: null. true false
+      //#autoAnimate: true
+      //#autoAnimateMatcher: null,
+      //#autoAnimateEasing: 'ease',
+      //autoAnimateDuration: 1.0,
+      //#autoAnimateUnmatched: true
+      //#autoAnimateStyles: []
+      autoSlide: 0, // TODO fix this to a falseable value
+      autoSlideStoppable: true,
+      autoSlideMethod: '0',
+      defaultTiming: 120,
+      mouseWheel: false,
+      //#previewLinks: false
+      //#postMessage: true, // TODO : this can cause issues with the vscode api ???
+      //#postMessageEvents: false,
+      //#focusBodyOnPageVisibilityChange: true,
+      transition: 'none',
+      transitionSpeed: 'default',
+      backgroundTransition: 'fade',
+      //#pdfMaxPagesPerSlide: Number.POSITIVE_INFINITY,
+      //#pdfSeparateFragments: true,
+      //#pdfPageHeightOffset: -1,
+      viewDistance: 3,
+      //#mobileViewDistance: 2,
+      display: 'block',
+      //#hideInactiveCursor: true,
+      //#hideCursorTime: 5000
+
+      // Parallax Background
+      parallaxBackgroundImage: '',
+      parallaxBackgroundSize: '',
+      parallaxBackgroundHorizontal: 0,
+      parallaxBackgroundVertical: 0,
+
+      //Presentation Size
+      width: 960,
+			height: 700,
+			margin: 0.04,
+      minScale: 0.2,
+      maxScale: 2,
+      disableLayout: false,
+
+      audio: {
+        prefix: 'audio/', // audio files are stored in the "audio" folder
+        suffix: '.ogg', // audio files have the ".ogg" ending
+        textToSpeechURL: null, // the URL to the text to speech converter
+        defaultNotes: false, // use slide notes as default for the text to speech converter
+        defaultText: false, // use slide text as default for the text to speech converter
+        advance: 0, // advance to next slide after given time in milliseconds after audio has played, use negative value to not advance
+        autoplay: false, // automatically start slideshow
+        defaultDuration: 5, // default duration in seconds if no audio is available
+        defaultAudios: true, // try to play audios with names such as audio/1.2.ogg
+        playerOpacity: 0.05, // opacity value of audio player if unfocused
+        playerStyle: 'position: fixed; bottom: 4px; left: 25%; width: 50%; height:75px; z-index: 33;', // style used for container of audio controls
+        startAtFragment: false, // when moving to a slide, start at the current fragment or at the start of the slide
+      },
+      
+			customcontrols: {
+					controls: [
+      						{
+						  id: 'toggle-overview',
+						  title: 'Toggle overview (O)',
+						  icon: '<i class="fa fa-th"></i>',
+						  action: 'Reveal.toggleOverview();'
+						}
+						
+				]
+			},
+			chart: {
+					defaults: { 
+						color: 'lightgray', // color of labels
+						scale: { 
+							beginAtZero: true, 
+							ticks: { stepSize: 1 },
+							grid: { color: "lightgray" } , // color of grid lines
+						},
+					},
+					line: { borderColor: [ "rgba(20,220,220,.8)" , "rgba(220,120,120,.8)", "rgba(20,120,220,.8)" ], "borderDash": [ [5,10], [0,0] ] }, 
+					bar: { backgroundColor: [ "rgba(20,220,220,.8)" , "rgba(220,120,120,.8)", "rgba(20,120,220,.8)" ]}, 
+					pie: { backgroundColor: [ ["rgba(0,0,0,.8)" , "rgba(220,20,20,.8)", "rgba(20,220,20,.8)", "rgba(220,220,20,.8)", "rgba(20,20,220,.8)"] ]},
+					radar: { borderColor: [ "rgba(20,220,220,.8)" , "rgba(220,120,120,.8)", "rgba(20,120,220,.8)" ]}, 
+			},
+			math: {
+				mathjax: 'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
+				config: 'TeX-AMS_HTML-full',
+				// pass other options into `MathJax.Hub.Config()`
+				TeX: { Macros: { RR: "{\\bf R}" } }
+				},
+				anything: [ 
+				{
+		className: "plot",
+		defaults: {width:500, height: 500, grid:true},
+		initialize: (function(container, options){ options.target = "#"+container.id; functionPlot(options) })
+	 },
+	 {
+		className: "chart",  
+		initialize: (function(container, options){ container.chart = new Chart(container.getContext("2d"), options);  })
+	 },
+	 {
+		className: "anything",
+		initialize: (function(container, options){ if (options && options.initialize) { options.initialize(container)} })
+	 },
+					],
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: (window.location.search.match(/print-pdf/gi) ? printPlugins : plugins ) 
+		});
+			
+
+
+	    // Change chalkboard theme : 
+		function changeTheme(input) {
+			var config = {};
+			config.theme = input.value;
+			Reveal.getPlugin("RevealChalkboard").configure(config);
+			input.blur();
+		}
+
+		// // Handle the message inside the webview
+        // window.addEventListener('message', event => {
+
+        //     const message = event.data; // The JSON data our extension sent
+
+        //     switch (message.command) {
+        //         case 'refactor':
+        //             Reveal.toggleHelp();
+        //     }
+        // });
+
+		if (window.location.search.match(/print-pdf-now/gi)) {
+      		setTimeout(() => {
+				window.print();
+			  }, 2500);
+			
+    }
+</script>
+
+</body>
+
+</html>
