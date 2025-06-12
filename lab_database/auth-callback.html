@@ -26,23 +26,12 @@
             }
             window.close();
         } else if (code && state) {
-            // Exchange code for token
-            // Note: This is a simplified approach for GitHub Pages
-            // In production, you'd exchange the code for a token on your backend
+            // Store the code and state in localStorage and redirect back to main app
+            localStorage.setItem('github_oauth_code', code);
+            localStorage.setItem('github_oauth_state', state);
             
-            // For now, we'll use the GitHub API directly (this requires CORS to be enabled)
-            // This is a limitation of client-side OAuth without a backend
-            
-            // Redirect to token creation page with instructions
-            if (window.opener) {
-                window.opener.postMessage({
-                    type: 'GITHUB_AUTH_SUCCESS_REDIRECT',
-                    message: 'GitHub authentication successful! Please create a Personal Access Token to complete setup.'
-                }, window.location.origin);
-            }
-            
-            // Redirect to GitHub token creation with proper scopes
-            window.location.href = 'https://github.com/settings/tokens/new?scopes=repo,user:email&description=Lab%20Database%20Access';
+            // Redirect back to the main application
+            window.location.href = window.location.origin + window.location.pathname.replace('/auth-callback.html', '');
         } else {
             // No code or error - something went wrong
             if (window.opener) {
