@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GitHub Authentication</title>
+</head>
+<body>
+    <div style="text-align: center; padding: 50px; font-family: Arial, sans-serif;">
+        <h2>Completing authentication...</h2>
+        <p>Please wait while we complete your GitHub authentication.</p>
+    </div>
+
+    <script>
+        // Extract code and state from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get('code');
+        const state = urlParams.get('state');
+        const error = urlParams.get('error');
+
+        if (error) {
+            // Handle OAuth error
+            if (window.opener) {
+                window.opener.postMessage({
+                    type: 'GITHUB_AUTH_ERROR',
+                    error: error || 'OAuth authentication failed'
+                }, window.location.origin);
+            }
+            window.close();
+        } else if (code && state) {
+            // Exchange code for token
+            // Note: This is a simplified approach for GitHub Pages
+            // In production, you'd exchange the code for a token on your backend
+            
+            // For now, we'll use the GitHub API directly (this requires CORS to be enabled)
+            // This is a limitation of client-side OAuth without a backend
+            
+            // Redirect to token creation page with instructions
+            if (window.opener) {
+                window.opener.postMessage({
+                    type: 'GITHUB_AUTH_SUCCESS_REDIRECT',
+                    message: 'GitHub authentication successful! Please create a Personal Access Token to complete setup.'
+                }, window.location.origin);
+            }
+            
+            // Redirect to GitHub token creation with proper scopes
+            window.location.href = 'https://github.com/settings/tokens/new?scopes=repo,user:email&description=Lab%20Database%20Access';
+        } else {
+            // No code or error - something went wrong
+            if (window.opener) {
+                window.opener.postMessage({
+                    type: 'GITHUB_AUTH_ERROR',
+                    error: 'No authorization code received'
+                }, window.location.origin);
+            }
+            window.close();
+        }
+    </script>
+</body>
+</html>
