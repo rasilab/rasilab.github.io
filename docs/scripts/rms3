@@ -1,9 +1,0 @@
-#! /bin/bash
-
-PATH_START=s3://fh-pi-subramaniam-a-eco/git_repos/
-
-PATH_END=$(pwd | grep -o -P "(?<=git/).+$")/
-
-FILES=$1
-
-aws s3 rm $PATH_START$PATH_END$1
