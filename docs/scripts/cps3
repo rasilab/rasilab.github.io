@@ -1,0 +1,12 @@
+#! /bin/bash
+
+PATH_START=s3://fh-pi-subramaniam-a-eco/git_repos/
+
+PATH_END=$(pwd | grep -o -P "(?<=git/).+$")/
+
+FILES=`ls *`
+
+for FILE in $FILES
+        do
+                aws s3 cp $FILE $PATH_START$PATH_END
+        done
