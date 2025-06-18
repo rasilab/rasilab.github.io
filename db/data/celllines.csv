@@ -1,0 +1,2 @@
+id,user_id,user_name,organism_id,organism_name,refid,genotype,date,source,link,copies,leftcopies,parent,reference,sequence,comment,location
+1,1,rasi,1,E. coli,LOCAL_TEST,LOCAL DATA TEST,2025-06-17,LOCAL FILE,http://localhost,1,1,,This is LOCAL data only,,For testing GitHub vs local,LOCAL TEST

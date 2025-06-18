@@ -1,0 +1,2 @@
+id,user_id,user_name,organism_id,organism_name,refid,genotype,date,source,link,replicates,leftover,parent,reference,sequence,resistance,temperature,copynumber,comment,location
+1,1,rasi,1,E. coli,LOCAL_PLASMID,LOCAL TEST PLASMID,2025-06-17,LOCAL FILE,http://localhost,1,1,,This is LOCAL data only,,ampicillin,37,high,For testing GitHub vs local,LOCAL plasmid box
