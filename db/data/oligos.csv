@@ -1,0 +1,2 @@
+id,user_id,user_name,organism_id,organism_name,refid,desc,seq,date,source,link,reference,usefulseq,comment,location,length,meltingtemp,gc
+1,1,rasi,1,E. coli,LOCAL_OLIGO,LOCAL TEST OLIGO,ATCGATCGATCG,2025-06-17,LOCAL FILE,http://localhost,,This is LOCAL data only,,LOCAL oligo box,12,45,50
