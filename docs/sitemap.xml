@@ -416,6 +416,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://rasilab.github.io/docs/experiments/protein/western_blot_protocol/</loc>
+         <lastmod>2026-11-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://rasilab.github.io/docs/experiments/rna/basic_polysomes/</loc>
          <lastmod>2026-11-16</lastmod>
          <changefreq>daily</changefreq>
